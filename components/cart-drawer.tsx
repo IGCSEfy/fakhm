@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
-import { X, Minus, Plus, ShoppingBag } from "lucide-react";
+import { X, Minus, Plus } from "lucide-react";
 import {
   formatPriceCents,
   selectSubtotalCents,
@@ -85,7 +85,20 @@ export default function CartDrawer() {
             <div className="flex-1 overflow-y-auto px-6 py-6">
               {items.length === 0 ? (
                 <div className="flex flex-col items-center justify-center h-full text-center gap-4 text-white/60">
-                  <ShoppingBag className="h-12 w-12 text-white/30" />
+                  {/* Minimal shopping bag (no "smile" — luxury-brand friendly) */}
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="h-12 w-12 text-white/30"
+                    aria-hidden
+                  >
+                    <path d="M3.103 6.034h17.794" />
+                    <path d="M3.4 5.467a2 2 0 0 0-.4 1.2V20a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6.667a2 2 0 0 0-.4-1.2l-2-2.667A2 2 0 0 0 17 2H7a2 2 0 0 0-1.6.8z" />
+                  </svg>
                   <p className="text-base">Your cart is empty.</p>
                   <Link
                     href="/shop"

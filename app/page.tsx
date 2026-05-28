@@ -54,7 +54,10 @@ function ParallaxGallery() {
 
   return (
     <div
-      className="relative flex w-full h-full min-h-[600px] justify-center items-center bg-background overflow-hidden"
+      // `isolate` creates a new stacking context so the inner `z-50`
+      // elements (logo, Shop now button) can't escape this section
+      // and overlap the sticky navbar above.
+      className="relative isolate flex w-full h-full min-h-[600px] justify-center items-center bg-background overflow-hidden"
       ref={scope}
     >
       <motion.div
