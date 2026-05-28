@@ -17,12 +17,12 @@ export default function CartButton() {
     <button
       type="button"
       onClick={openCart}
-      className="relative h-10 w-10 rounded-lg border border-white/20 text-white hover:bg-white/10 hover:border-transparent transition-colors flex items-center justify-center"
+      className="relative p-2 text-white hover:text-white/70 transition-colors flex items-center justify-center"
       aria-label={`Open cart${displayCount > 0 ? ` (${displayCount} items)` : ""}`}
     >
-      <BagIcon className="h-5 w-5" strokeWidth={2} />
+      <BagIcon className="h-6 w-6" strokeWidth={1.75} />
       {displayCount > 0 && (
-        <span className="absolute -top-2 -right-2 min-w-[22px] h-[22px] px-1.5 rounded-full bg-white text-black text-xs font-bold flex items-center justify-center">
+        <span className="absolute top-0 right-0 min-w-[18px] h-[18px] px-1 rounded-full bg-white text-black text-[10px] font-bold flex items-center justify-center">
           {displayCount}
         </span>
       )}
