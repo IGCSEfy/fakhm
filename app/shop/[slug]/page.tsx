@@ -9,6 +9,7 @@ import {
 } from "@/lib/products";
 import ProductActions from "@/components/product-actions";
 import { Button } from "@/components/ui/button";
+import { ElitePlanCard } from "@/components/ui/elite-plan-card";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -158,23 +159,19 @@ export default async function ProductPage({ params }: Props) {
           <h2 className="text-xs uppercase tracking-[0.3em] text-white/50 mb-8">
             You may also like
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 justify-items-center">
             {related.map((p) => (
-              <Link key={p.slug} href={`/shop/${p.slug}`} className="group">
-                <div className="aspect-[3/4] overflow-hidden rounded-2xl border border-white/10 mb-3">
-                  <img
-                    src={p.imageUrl}
-                    alt={p.name}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                </div>
-                <p className="text-xs uppercase tracking-[0.2em] text-white/40 mb-1">
-                  {p.tagline}
-                </p>
-                <h3 className="text-xl font-bold uppercase text-white leading-none mb-1">
-                  {p.name}
-                </h3>
-                <p className="text-sm text-white/60">{p.sizes[0].price}</p>
+              <Link
+                key={p.slug}
+                href={`/shop/${p.slug}`}
+                className="block w-full max-w-sm"
+              >
+                <ElitePlanCard
+                  imageUrl={p.imageUrl}
+                  title={p.name}
+                  subtitle={p.tagline}
+                  price={p.sizes[0].price}
+                />
               </Link>
             ))}
           </div>
