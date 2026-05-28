@@ -1,0 +1,185 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { ArrowLeft } from "lucide-react";
+import {
+  getOtherProducts,
+  getProductBySlug,
+  products,
+} from "@/lib/products";
+import ProductActions from "@/components/product-actions";
+import { Button } from "@/components/ui/button";
+
+type Props = {
+  params: Promise<{ slug: string }>;
+};
+
+export function generateStaticParams() {
+  return products.map((p) => ({ slug: p.slug }));
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const product = getProductBySlug(slug);
+  if (!product) {
+    return { title: "Not found — Fakhm Oud" };
+  }
+  return {
+    title: `${product.name} — Fakhm Oud`,
+    description: product.shortDescription,
+  };
+}
+
+export default async function ProductPage({ params }: Props) {
+  const { slug } = await params;
+  const product = getProductBySlug(slug);
+  if (!product) notFound();
+
+  const related = getOtherProducts(product.slug);
+
+  return (
+    <article className="pt-12 pb-16 px-6">
+      <div className="max-w-6xl mx-auto">
+        {/* Breadcrumb */}
+        <div className="mb-8">
+          <Button
+            variant="ghost"
+            className="group"
+            nativeButton={false}
+            render={<Link href="/shop" />}
+          >
+            <ArrowLeft
+              className="-ms-1 me-2 opacity-60 transition-transform group-hover:-translate-x-0.5"
+              size={16}
+              strokeWidth={2}
+              aria-hidden="true"
+            />
+            Back to shop
+          </Button>
+        </div>
+
+        {/* Hero: image + details */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 mb-20">
+          <div className="relative aspect-square overflow-hidden rounded-3xl border border-white/10">
+            <img
+              src={product.imageUrl}
+              alt={product.name}
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+          </div>
+          <div className="flex flex-col gap-10">
+            <div>
+              <p className="text-[10px] uppercase tracking-[0.3em] text-white/50 mb-4">
+                {product.tagline}
+                {product.origin && (
+                  <span className="ml-2 text-white/30">
+                    · {product.origin}
+                  </span>
+                )}
+              </p>
+              <h1 className="text-5xl md:text-7xl font-bold uppercase leading-none mb-6 text-white">
+                {product.name}
+              </h1>
+              <p className="text-base text-white/70 leading-relaxed">
+                {product.shortDescription}
+              </p>
+            </div>
+
+            <ProductActions product={product} />
+          </div>
+        </div>
+
+        {/* Long description */}
+        <section className="max-w-3xl mb-20">
+          <h2 className="text-3xl md:text-4xl font-bold uppercase mb-6 text-white">
+            About {product.name}
+          </h2>
+          <p className="whitespace-pre-line text-base md:text-lg text-white/70 leading-relaxed">
+            {product.longDescription}
+          </p>
+        </section>
+
+        {/* Scent notes (pure ouds only) */}
+        {product.notes && (
+          <section className="mb-20 border-t border-white/10 pt-12">
+            <h2 className="text-xs uppercase tracking-[0.3em] text-white/50 mb-8">
+              Scent Notes
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div>
+                <p className="text-xs uppercase tracking-widest text-white/40 mb-3">
+                  Top
+                </p>
+                <p className="text-white text-lg">
+                  {product.notes.top.join(" · ")}
+                </p>
+              </div>
+              <div>
+                <p className="text-xs uppercase tracking-widest text-white/40 mb-3">
+                  Heart
+                </p>
+                <p className="text-white text-lg">
+                  {product.notes.heart.join(" · ")}
+                </p>
+              </div>
+              <div>
+                <p className="text-xs uppercase tracking-widest text-white/40 mb-3">
+                  Base
+                </p>
+                <p className="text-white text-lg">
+                  {product.notes.base.join(" · ")}
+                </p>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Contents (Discovery Set) */}
+        {product.contents && (
+          <section className="mb-20 border-t border-white/10 pt-12">
+            <h2 className="text-xs uppercase tracking-[0.3em] text-white/50 mb-8">
+              What&apos;s Inside
+            </h2>
+            <ul className="max-w-md">
+              {product.contents.map((item) => (
+                <li
+                  key={item}
+                  className="text-white py-3 border-b border-white/10 last:border-b-0"
+                >
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
+        {/* Related */}
+        <section className="border-t border-white/10 pt-12">
+          <h2 className="text-xs uppercase tracking-[0.3em] text-white/50 mb-8">
+            You may also like
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+            {related.map((p) => (
+              <Link key={p.slug} href={`/shop/${p.slug}`} className="group">
+                <div className="aspect-[3/4] overflow-hidden rounded-2xl border border-white/10 mb-3">
+                  <img
+                    src={p.imageUrl}
+                    alt={p.name}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+                <p className="text-xs uppercase tracking-[0.2em] text-white/40 mb-1">
+                  {p.tagline}
+                </p>
+                <h3 className="text-xl font-bold uppercase text-white leading-none mb-1">
+                  {p.name}
+                </h3>
+                <p className="text-sm text-white/60">{p.sizes[0].price}</p>
+              </Link>
+            ))}
+          </div>
+        </section>
+      </div>
+    </article>
+  );
+}
