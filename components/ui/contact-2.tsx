@@ -56,7 +56,7 @@ export const Contact2 = ({
             </div>
           </div>
           <div className="mx-auto flex max-w-screen-md flex-col gap-6 rounded-lg border p-10">
-            <div className="flex gap-4">
+            <div className="flex flex-col sm:flex-row gap-4">
               <div className="grid w-full items-center gap-1.5">
                 <Label htmlFor="firstname">First Name</Label>
                 <Input type="text" id="firstname" placeholder="First Name" />

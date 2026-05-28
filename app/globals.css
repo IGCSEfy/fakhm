@@ -122,8 +122,11 @@
   }
   body {
     @apply bg-background text-foreground;
+    /* Belt-and-braces: prevent any one element from causing horizontal
+       page scroll on mobile (rogue images, wide grids, etc.) */
+    @apply overflow-x-hidden;
   }
   html {
-    @apply font-sans;
+    @apply font-sans overflow-x-hidden;
   }
 }

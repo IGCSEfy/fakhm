@@ -53,7 +53,11 @@ export default function ProductActions({ product }: Props) {
                   onClick={() => setSelectedIndex(i)}
                 >
                   <span className="font-bold">{size.label}</span>
-                  <span className="opacity-60 ml-1">{size.price}</span>
+                  {/* Hide price on small screens to prevent group overflow;
+                      the full price still shows below the selector. */}
+                  <span className="opacity-60 ml-1 hidden sm:inline">
+                    {size.price}
+                  </span>
                 </ButtonGroupItem>
               );
             })}
@@ -62,7 +66,7 @@ export default function ProductActions({ product }: Props) {
       )}
 
       {/* Price + Add to cart */}
-      <div className="flex items-center justify-between gap-4 mt-auto pt-4 border-t border-white/10">
+      <div className="flex flex-wrap items-center justify-between gap-4 mt-auto pt-4 border-t border-white/10">
         <p className="text-3xl font-bold text-white">{selected.price}</p>
         <ButtonWithIcon onClick={handleAddToCart}>Add to cart</ButtonWithIcon>
       </div>

@@ -36,8 +36,8 @@ const exampleImages = [
     title: "Minimalist perfume bottle",
   },
   {
-    url: "https://images.unsplash.com/photo-1605559911160-a3d95d213904?w=800&q=80",
-    title: "Glass spray bottle",
+    url: "https://images.unsplash.com/photo-1610461888750-10bfc601b874?w=800&q=80",
+    title: "Dark amber oud bottle",
   },
   {
     url: "https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=800&q=80",
@@ -104,7 +104,7 @@ function ParallaxGallery() {
           />
         </FloatingElement>
 
-        <FloatingElement depth={1} className="top-[40%] left-[2%]">
+        <FloatingElement depth={1} className="top-[40%] left-[2%] hidden sm:block">
           <motion.img
             initial={{ opacity: 0 }}
             src={exampleImages[4].url}
@@ -126,7 +126,7 @@ function ParallaxGallery() {
             className="w-40 md:w-52 h-full object-cover hover:scale-105 duration-200 cursor-pointer transition-transform"
           />
         </FloatingElement>
-        <FloatingElement depth={1} className="top-[80%] left-[50%]">
+        <FloatingElement depth={1} className="top-[80%] left-[50%] hidden sm:block">
           <motion.img
             initial={{ opacity: 0 }}
             src={exampleImages[6].url}
