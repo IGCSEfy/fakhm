@@ -75,10 +75,16 @@ export function PriceTag({
     <span className={className}>
       <Price cents={cents} />
       {showCompare && (
-        <Price
-          cents={compareAtCents}
-          className="ms-2 text-[0.7em] font-normal text-white/40 line-through"
-        />
+        // Manually drawn strikethrough: CSS line-through doesn't cross the
+        // inline-block dirham symbol, so we overlay a solid line across the
+        // whole "was" price (symbol + number) instead.
+        <span className="relative inline-block ms-2 text-[0.7em] font-normal text-white/40">
+          <Price cents={compareAtCents} />
+          <span
+            aria-hidden
+            className="pointer-events-none absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-current"
+          />
+        </span>
       )}
     </span>
   );
