@@ -78,6 +78,7 @@ export const products: Product[] = [
       "Oud Zahabi — “golden oud” — is for the oud lover who wants it strong. A dense, smoky oud with woody depth and a golden amber warmth that announces itself and holds for hours.\n\nNot subtle. Not for the faint-hearted.",
     price: "30 DHS",
     priceCents: 3000,
+    compareAtCents: 4000,
     volume: "6ml",
     imageUrl:
       "https://images.unsplash.com/photo-1594035910387-fea47794261f?w=1600&q=80",
