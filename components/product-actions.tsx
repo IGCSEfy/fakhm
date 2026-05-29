@@ -16,7 +16,7 @@ export default function ProductActions({ product }: Props) {
     addItem({
       productSlug: product.slug,
       productName: product.name,
-      sizeLabel: "",
+      sizeLabel: product.volume,
       priceLabel: product.price,
       priceCents: product.priceCents,
       imageUrl: product.imageUrl,
@@ -25,7 +25,12 @@ export default function ProductActions({ product }: Props) {
 
   return (
     <div className="flex flex-wrap items-center justify-between gap-4 mt-auto pt-4 border-t border-white/10">
-      <p className="text-3xl font-bold text-white">{product.price}</p>
+      <p className="text-3xl font-bold text-white">
+        {product.price}
+        <span className="ml-2 text-base font-normal text-white/50">
+          · {product.volume}
+        </span>
+      </p>
       <ButtonWithIcon onClick={handleAddToCart}>Add to cart</ButtonWithIcon>
     </div>
   );

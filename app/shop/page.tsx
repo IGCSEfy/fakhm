@@ -33,6 +33,7 @@ export default function ShopPage() {
             title={featuredProduct.name}
             subtitle={`Featured · ${featuredProduct.tagline}`}
             price={featuredProduct.price}
+            volume={featuredProduct.volume}
             description={featuredProduct.shortDescription}
           />
         </Link>
@@ -54,6 +55,7 @@ export default function ShopPage() {
                   title={p.name}
                   subtitle={p.tagline}
                   price={p.price}
+                  volume={p.volume}
                 />
               </Link>
             ))}

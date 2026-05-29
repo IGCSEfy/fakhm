@@ -124,6 +124,7 @@ export default async function ProductPage({ params }: Props) {
                   title={p.name}
                   subtitle={p.tagline}
                   price={p.price}
+                  volume={p.volume}
                 />
               </Link>
             ))}
