@@ -50,8 +50,8 @@ export function Price({
   const dhs = Math.round(cents / 100).toLocaleString("en-US");
   return (
     <span className={className}>
+      <Dirham className="me-1" />
       {dhs}
-      <Dirham className="ms-1" />
     </span>
   );
 }

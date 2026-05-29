@@ -19,7 +19,7 @@ export default function ShopPage() {
           </h1>
           <p className="text-white/60 max-w-xl text-base font-normal">
             Oud-forward attars and bakhoor, blended to last. Free shipping on
-            orders over 200<Dirham className="ms-1" />.
+            orders over <Dirham className="me-1" />200.
           </p>
         </div>
 
