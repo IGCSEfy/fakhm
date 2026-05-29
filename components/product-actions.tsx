@@ -30,10 +30,8 @@ export default function ProductActions({ product }: Props) {
         <PriceTag
           cents={product.priceCents}
           compareAtCents={product.compareAtCents}
+          volume={product.volume}
         />
-        <span className="ml-2 text-base font-normal text-white/50">
-          · {product.volume}
-        </span>
       </p>
       <ButtonWithIcon onClick={handleAddToCart}>Add to cart</ButtonWithIcon>
     </div>

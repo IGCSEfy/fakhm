@@ -37,9 +37,9 @@ export default function ShopPage() {
               <PriceTag
                 cents={featuredProduct.priceCents}
                 compareAtCents={featuredProduct.compareAtCents}
+                volume={featuredProduct.volume}
               />
             }
-            volume={featuredProduct.volume}
             description={featuredProduct.shortDescription}
           />
         </Link>
@@ -64,9 +64,9 @@ export default function ShopPage() {
                     <PriceTag
                       cents={p.priceCents}
                       compareAtCents={p.compareAtCents}
+                      volume={p.volume}
                     />
                   }
-                  volume={p.volume}
                 />
               </Link>
             ))}

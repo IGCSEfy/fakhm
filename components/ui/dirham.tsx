@@ -1,5 +1,7 @@
 import React from "react";
 
+import { cn } from "@/lib/utils";
+
 /**
  * UAE Dirham currency symbol.
  *
@@ -64,25 +66,38 @@ export function Price({
 export function PriceTag({
   cents,
   compareAtCents,
+  volume,
   className,
 }: {
   cents: number;
   compareAtCents?: number;
+  volume?: string;
   className?: string;
 }) {
   const showCompare = compareAtCents != null && compareAtCents > cents;
+  const percentOff = showCompare
+    ? Math.round((1 - cents / compareAtCents) * 100)
+    : 0;
   return (
-    <span className={className}>
+    <span className={cn("inline-flex flex-wrap items-center gap-x-2", className)}>
       <Price cents={cents} />
       {showCompare && (
-        // "Was" price: dirham symbol left uncrossed, with a solid white line
-        // overlaid across only the number.
-        <span className="ms-2 font-normal text-neutral-400">
-          <Dirham className="me-1" />
-          <span className="line-through decoration-[1.5px]">
-            {Math.round(compareAtCents / 100).toLocaleString("en-US")}
+        <>
+          {/* "Was" price: dirham symbol left uncrossed, number struck. */}
+          <span className="font-normal text-neutral-400">
+            <Dirham className="me-1" />
+            <span className="line-through decoration-[1.5px]">
+              {Math.round(compareAtCents / 100).toLocaleString("en-US")}
+            </span>
           </span>
-        </span>
+          {/* Discount badge */}
+          <span className="rounded-full bg-white px-2 py-0.5 text-[0.6em] font-bold uppercase leading-none tracking-wider text-black">
+            {percentOff}% Off
+          </span>
+        </>
+      )}
+      {volume && (
+        <span className="font-normal text-white/50">· {volume}</span>
       )}
     </span>
   );

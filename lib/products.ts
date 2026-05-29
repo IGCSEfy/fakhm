@@ -94,7 +94,7 @@ export const products: Product[] = [
       "Musk Rijali is light, sweet, and effortless — a soft white musk with a gentle sweetness and a clean finish.\n\nThe easiest place to start, and the one you reach for without thinking.",
     price: "40 DHS",
     priceCents: 4000,
-    compareAtCents: 5500,
+    compareAtCents: 5300,
     volume: "12ml",
     imageUrl:
       "https://images.unsplash.com/photo-1615634260167-c8cdede054de?w=1600&q=80",
@@ -109,7 +109,7 @@ export const products: Product[] = [
       "Oud Iraqi Bhukoor is traditional bakhoor — oud-soaked wood chips meant to be burned over charcoal or in an electric burner.\n\nA few minutes fills a room with deep, smoky oud. The classic way to scent a home and welcome guests.",
     price: "25 DHS",
     priceCents: 2500,
-    compareAtCents: 3500,
+    compareAtCents: 3570,
     volume: "25g",
     imageUrl:
       "https://images.unsplash.com/photo-1541643600914-78b084683601?w=1600&q=80",

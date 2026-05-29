@@ -125,9 +125,12 @@ export default async function ProductPage({ params }: Props) {
                   title={p.name}
                   subtitle={p.tagline}
                   price={
-                    <PriceTag cents={p.priceCents} compareAtCents={p.compareAtCents} />
+                    <PriceTag
+                      cents={p.priceCents}
+                      compareAtCents={p.compareAtCents}
+                      volume={p.volume}
+                    />
                   }
-                  volume={p.volume}
                 />
               </Link>
             ))}

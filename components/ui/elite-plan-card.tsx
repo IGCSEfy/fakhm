@@ -25,8 +25,6 @@ interface ElitePlanCardProps extends SafeDivProps {
   subtitle: string;
   /** Optional. Rendered prominently below the title (white, bold). */
   price?: React.ReactNode;
-  /** Optional volume/quantity shown muted next to the price, e.g. "6ml". */
-  volume?: string;
   /** Optional long-form copy below the title/price. */
   description?: string;
   /** Optional set of short feature chips (vertical layout only). */
@@ -54,7 +52,6 @@ export const ElitePlanCard = React.forwardRef<
       title,
       subtitle,
       price,
-      volume,
       description,
       highlights = [],
       onAction,
@@ -139,12 +136,7 @@ export const ElitePlanCard = React.forwardRef<
               {/* In vertical layout, price sits right under the title.
                   In horizontal, it goes in the bottom row alongside the CTA. */}
               {!isHorizontal && price && (
-                <p className="mt-2 text-base font-bold text-white">
-                  {price}
-                  {volume && (
-                    <span className="font-normal text-white/50"> · {volume}</span>
-                  )}
-                </p>
+                <p className="mt-2 text-base font-bold text-white">{price}</p>
               )}
 
               {description && (
@@ -165,15 +157,7 @@ export const ElitePlanCard = React.forwardRef<
             {isHorizontal && (
               <div className="flex items-center justify-between gap-4 flex-wrap">
                 {price && (
-                  <p className="text-2xl font-bold text-white">
-                    {price}
-                    {volume && (
-                      <span className="text-base font-normal text-white/50">
-                        {" "}
-                        · {volume}
-                      </span>
-                    )}
-                  </p>
+                  <p className="text-2xl font-bold text-white">{price}</p>
                 )}
                 {onAction ? (
                   <ButtonWithIcon onClick={onAction}>
