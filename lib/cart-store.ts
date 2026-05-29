@@ -5,7 +5,7 @@ export type CartItem = {
   productSlug: string;
   productName: string;
   sizeLabel: string;
-  /** Display price string, e.g. "$480" or "$1,650" */
+  /** Display price string, e.g. "45 DHS" */
   priceLabel: string;
   /** Numeric price in cents, used for subtotal */
   priceCents: number;

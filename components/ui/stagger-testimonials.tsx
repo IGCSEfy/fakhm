@@ -10,70 +10,70 @@ const testimonials = [
   {
     tempId: 0,
     testimonial:
-      "The Hindi is unlike anything I've owned. Smokier and more alive than I expected — it lingers for hours.",
+      "Shams is my winter signature now. Warm, spicy, and it stays on my thobe all day.",
     by: "Yusuf, Dubai",
     imgSrc: "https://i.pravatar.cc/150?img=12",
   },
   {
     tempId: 1,
     testimonial:
-      "I bought the Cambodi as a gift for my father. He hasn't worn anything else since.",
+      "Qamr is the one everyone asks about. The rose and cardamom together are unreal.",
     by: "Layla, London",
     imgSrc: "https://i.pravatar.cc/150?img=47",
   },
   {
     tempId: 2,
     testimonial:
-      "Three drops of the Maroki and strangers stop me asking what I'm wearing.",
+      "Falaq smells like a fresh morning — citrus and florals over oud. My daily wear.",
     by: "Omar, Riyadh",
     imgSrc: "https://i.pravatar.cc/150?img=15",
   },
   {
     tempId: 3,
     testimonial:
-      "I've collected oud for fifteen years. The Discovery Set was a masterclass — each one a different world.",
+      "Musk Rijali is so clean and easy. My go-to when I don't want to think about it.",
     by: "Sara, Kuala Lumpur",
     imgSrc: "https://i.pravatar.cc/150?img=32",
   },
   {
     tempId: 4,
     testimonial:
-      "Real oud. Single origin. No reconstitution. That alone is worth twice the price.",
+      "The Iraqi bakhoor fills the whole majlis. Guests always ask what's burning.",
     by: "Imran, Toronto",
     imgSrc: "https://i.pravatar.cc/150?img=8",
   },
   {
     tempId: 5,
     testimonial:
-      "Wore the Hindi to a wedding. Four people followed me to ask what it was.",
+      "Wore Shams to a wedding. Three people followed me to ask what it was.",
     by: "Khalid, Manchester",
     imgSrc: "https://i.pravatar.cc/150?img=53",
   },
   {
     tempId: 6,
     testimonial:
-      "I thought I knew what oud smelled like. The Cambodi proved me wrong, in the best way.",
+      "Gifted Qamr to my mother and immediately had to order another for myself.",
     by: "Aisha, Paris",
     imgSrc: "https://i.pravatar.cc/150?img=44",
   },
   {
     tempId: 7,
     testimonial:
-      "Worth every dirham. I've stopped trying anything else.",
+      "Didn't expect this quality at the price. Lasts longer than bottles triple the cost.",
     by: "Hassan, Abu Dhabi",
     imgSrc: "https://i.pravatar.cc/150?img=60",
   },
   {
     tempId: 8,
     testimonial:
-      "My wife stole my bottle. I had to buy two more.",
+      "My wife stole my Musk Rijali. I had to buy two more.",
     by: "Tariq, Karachi",
     imgSrc: "https://i.pravatar.cc/150?img=68",
   },
   {
     tempId: 9,
     testimonial:
-      "Still smells on my coat from a meeting last week. This is what aged oud is supposed to do.",
+      "Still smelled Falaq on my collar the next morning. Exactly what I want from an oud.",
     by: "Noor, Doha",
     imgSrc: "https://i.pravatar.cc/150?img=49",
   },

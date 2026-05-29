@@ -19,18 +19,18 @@ export default function AboutPage() {
 
           <div className="grid gap-6 md:grid-cols-2 md:gap-12 pt-8">
             <h1 className="text-3xl md:text-4xl font-semibold text-gray-900 dark:text-white leading-snug">
-              The <span className="text-primary">art</span> of oud
+              Oud, made <span className="text-primary">for every day</span>
               <span className="text-gray-500 dark:text-gray-400">
                 {" "}
-                — distilled by hand, aged in secrecy, bottled in small
-                numbered editions.
+                — rich, oud-forward blends and traditional bakhoor, at a price
+                that makes sense.
               </span>
             </h1>
             <div className="space-y-6 text-muted-foreground">
               <p>
-                Every bottle of Fakhm Oud is traceable to the forest it came
-                from. Every drop has rested in clay for years before reaching
-                you. No reconstitution. No shortcuts.
+                Oud has always carried a reputation for being rare and
+                expensive. Fakhm Oud exists to change that — concentrated,
+                long-lasting scents built around oud, made approachable.
               </p>
               <Button
                 variant="secondary"
@@ -56,9 +56,9 @@ export default function AboutPage() {
               About Us
             </h1>
             <p className="text-muted-foreground">
-              Fakhm Oud was founded on a simple idea — that real oud, sourced
-              from real forests, distilled by real hands, deserves to be in
-              your collection. We are small, deliberate, and patient.
+              We blend oud-forward attars and prepare traditional bakhoor for
+              people who love the scent of oud but don't want to pay a
+              fortune for it. Small batches, honest prices, made to last.
             </p>
           </div>
 
@@ -94,10 +94,10 @@ export default function AboutPage() {
                   <div className="absolute bottom-0 h-32 w-full bg-gradient-to-t from-black via-black/70 to-transparent" />
                 </motion.div>
                 <div className="p-6">
-                  <h3 className="text-xl font-bold">Hand-Distilled</h3>
+                  <h3 className="text-xl font-bold">Three Signatures</h3>
                   <p className="mt-2 text-sm text-gray-300">
-                    Traditional deg-bhapka. Low heat over copper alembics for
-                    weeks. Patience over yield, always.
+                    Shams, Qamr, and Falaq — named for the sun, the moon, and
+                    the break of dawn. Three oud blends, three moods.
                   </p>
                   <Button
                     variant="outline"
@@ -122,10 +122,10 @@ export default function AboutPage() {
                   className="h-full w-full object-cover min-h-[220px] sm:min-h-[240px] md:min-h-[220px]"
                 />
                 <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent text-white">
-                  <h3 className="text-xl font-bold">Built for Memory</h3>
+                  <h3 className="text-xl font-bold">Made to Last</h3>
                   <p className="mt-2 text-sm text-gray-200">
-                    Pure oud lingers — on skin, on cloth, in moments. Wear
-                    what stays.
+                    Concentrated oils that stay close and last for hours — plus
+                    traditional bakhoor to scent your home.
                   </p>
                 </div>
               </motion.div>
