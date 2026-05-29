@@ -127,9 +127,11 @@ export default function CartDrawer() {
                             >
                               {item.productName}
                             </Link>
-                            <p className="text-xs text-white/50 mt-0.5">
-                              {item.sizeLabel}
-                            </p>
+                            {item.sizeLabel && (
+                              <p className="text-xs text-white/50 mt-0.5">
+                                {item.sizeLabel}
+                              </p>
+                            )}
                           </div>
                           <button
                             type="button"

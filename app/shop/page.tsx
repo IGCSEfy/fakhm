@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Droplet, Mountain, Package, RotateCcw } from "lucide-react";
+import { Clock, Sparkles, Package, RotateCcw } from "lucide-react";
 import { ElitePlanCard } from "@/components/ui/elite-plan-card";
 import ButtonWithIcon from "@/components/ui/button-with-icon";
 import { products } from "@/lib/products";
@@ -17,8 +17,8 @@ export default function ShopPage() {
             Shop
           </h1>
           <p className="text-white/60 max-w-xl text-base font-normal">
-            Pure oud, hand-distilled, in small numbered editions. Free shipping
-            on orders over $300.
+            Oud-forward attars and bakhoor, blended to last. Free shipping on
+            orders over 200 DHS.
           </p>
         </div>
 
@@ -32,7 +32,7 @@ export default function ShopPage() {
             imageUrl={featuredProduct.imageUrl}
             title={featuredProduct.name}
             subtitle={`Featured · ${featuredProduct.tagline}`}
-            price={featuredProduct.sizes[0].price}
+            price={featuredProduct.price}
             description={featuredProduct.shortDescription}
           />
         </Link>
@@ -53,7 +53,7 @@ export default function ShopPage() {
                   imageUrl={p.imageUrl}
                   title={p.name}
                   subtitle={p.tagline}
-                  price={p.sizes[0].price}
+                  price={p.price}
                 />
               </Link>
             ))}
@@ -64,19 +64,19 @@ export default function ShopPage() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-10 border-y border-white/10 mb-24">
           {[
             {
-              icon: <Droplet className="h-5 w-5" />,
-              label: "Hand-Distilled",
-              detail: "Slow copper alembic",
+              icon: <Clock className="h-5 w-5" />,
+              label: "Long-Lasting",
+              detail: "Hours on the skin",
             },
             {
-              icon: <Mountain className="h-5 w-5" />,
-              label: "Single Origin",
-              detail: "Traceable to source",
+              icon: <Sparkles className="h-5 w-5" />,
+              label: "Oud-Forward",
+              detail: "Rich, authentic blends",
             },
             {
               icon: <Package className="h-5 w-5" />,
               label: "Free Shipping",
-              detail: "On orders over $300",
+              detail: "On orders over 200 DHS",
             },
             {
               icon: <RotateCcw className="h-5 w-5" />,
@@ -103,48 +103,45 @@ export default function ShopPage() {
             Why Fakhm Oud
           </p>
           <h2 className="text-4xl md:text-5xl font-bold uppercase leading-none mb-12 text-white max-w-3xl">
-            Built on patience.
+            Sun, moon,
             <br />
-            Bottled for memory.
+            and daybreak.
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
             <div>
               <p className="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-3">
-                01 — Purity
+                01 — The Collection
               </p>
               <h3 className="text-xl font-bold uppercase text-white mb-3 leading-tight">
-                Single-origin, never reconstituted
+                Three signatures
               </h3>
               <p className="text-sm text-white/60 leading-relaxed">
-                Every batch is traceable to the forest it came from. No blends,
-                no synthetics, no shortcuts. What's in the bottle is what was
-                in the wood.
+                Shams, Qamr, and Falaq — named for the sun, the moon, and the
+                break of dawn. Each its own mood, all built on oud.
               </p>
             </div>
             <div>
               <p className="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-3">
-                02 — Heritage
+                02 — Made to Last
               </p>
               <h3 className="text-xl font-bold uppercase text-white mb-3 leading-tight">
-                Distilled by hand
+                Concentrated &amp; rich
               </h3>
               <p className="text-sm text-white/60 leading-relaxed">
-                Traditional deg-bhapka — copper alembics, low heat, weeks of
-                patience over yield. The same method our distillers learned
-                from theirs.
+                Oud-forward attars that stay close to the skin and last through
+                the day — a little goes a long way.
               </p>
             </div>
             <div>
               <p className="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-3">
-                03 — Craft
+                03 — Honestly Priced
               </p>
               <h3 className="text-xl font-bold uppercase text-white mb-3 leading-tight">
-                Aged seven years, minimum
+                Oud, without the markup
               </h3>
               <p className="text-sm text-white/60 leading-relaxed">
-                Pure oud cannot be rushed. Our wood rests in clay before
-                distillation; the oil rests in glass before bottling. Small,
-                numbered editions only.
+                Real oud character at a price that makes sense. Plus
+                traditional bakhoor to scent your home.
               </p>
             </div>
           </div>
@@ -153,13 +150,13 @@ export default function ShopPage() {
         {/* Closing CTA */}
         <div className="text-center py-12 border-t border-white/10">
           <p className="text-xs uppercase tracking-[0.3em] text-white/50 mb-3">
-            Not sure where to start?
+            New to oud?
           </p>
           <h3 className="text-2xl md:text-3xl font-bold uppercase text-white mb-6">
-            Try the Discovery Set.
+            Start with Musk Rijali.
           </h3>
-          <ButtonWithIcon href="/shop/discovery-set">
-            Shop Discovery Set — $120
+          <ButtonWithIcon href="/shop/musk-rijali">
+            Shop Musk Rijali — 40 DHS
           </ButtonWithIcon>
         </div>
       </div>

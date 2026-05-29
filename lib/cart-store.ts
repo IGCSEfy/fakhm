@@ -110,18 +110,13 @@ export const selectTotalQty = (state: CartState) =>
 export const selectSubtotalCents = (state: CartState) =>
   state.items.reduce((sum, i) => sum + i.priceCents * i.qty, 0);
 
-/** Format a cents value as a USD price string. */
+/** Format a fils value as a DHS price string, e.g. "85 DHS". */
 export function formatPriceCents(cents: number): string {
-  const dollars = cents / 100;
-  return dollars.toLocaleString("en-US", {
-    style: "currency",
-    currency: "USD",
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0,
-  });
+  const dhs = Math.round(cents / 100);
+  return `${dhs.toLocaleString("en-US")} DHS`;
 }
 
-/** Parse a price string like "$1,650" or "$120" into cents. */
+/** Parse a price string like "45 DHS" into fils (4500). */
 export function parsePriceToCents(priceLabel: string): number {
   const digits = priceLabel.replace(/[^0-9.]/g, "");
   if (!digits) return 0;

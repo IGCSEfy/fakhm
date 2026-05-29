@@ -72,11 +72,6 @@ export default async function ProductPage({ params }: Props) {
             <div>
               <p className="text-[10px] uppercase tracking-[0.3em] text-white/50 mb-4">
                 {product.tagline}
-                {product.origin && (
-                  <span className="ml-2 text-white/30">
-                    · {product.origin}
-                  </span>
-                )}
               </p>
               <h1 className="text-5xl md:text-7xl font-bold uppercase leading-none mb-6 text-white">
                 {product.name}
@@ -100,57 +95,15 @@ export default async function ProductPage({ params }: Props) {
           </p>
         </section>
 
-        {/* Scent notes (pure ouds only) */}
-        {product.notes && (
+        {/* Scent profile */}
+        {product.scentProfile && (
           <section className="mb-20 border-t border-white/10 pt-12">
-            <h2 className="text-xs uppercase tracking-[0.3em] text-white/50 mb-8">
-              Scent Notes
+            <h2 className="text-xs uppercase tracking-[0.3em] text-white/50 mb-6">
+              Scent Profile
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div>
-                <p className="text-xs uppercase tracking-widest text-white/40 mb-3">
-                  Top
-                </p>
-                <p className="text-white text-lg">
-                  {product.notes.top.join(" · ")}
-                </p>
-              </div>
-              <div>
-                <p className="text-xs uppercase tracking-widest text-white/40 mb-3">
-                  Heart
-                </p>
-                <p className="text-white text-lg">
-                  {product.notes.heart.join(" · ")}
-                </p>
-              </div>
-              <div>
-                <p className="text-xs uppercase tracking-widest text-white/40 mb-3">
-                  Base
-                </p>
-                <p className="text-white text-lg">
-                  {product.notes.base.join(" · ")}
-                </p>
-              </div>
-            </div>
-          </section>
-        )}
-
-        {/* Contents (Discovery Set) */}
-        {product.contents && (
-          <section className="mb-20 border-t border-white/10 pt-12">
-            <h2 className="text-xs uppercase tracking-[0.3em] text-white/50 mb-8">
-              What&apos;s Inside
-            </h2>
-            <ul className="max-w-md">
-              {product.contents.map((item) => (
-                <li
-                  key={item}
-                  className="text-white py-3 border-b border-white/10 last:border-b-0"
-                >
-                  {item}
-                </li>
-              ))}
-            </ul>
+            <p className="text-white text-2xl md:text-3xl font-bold">
+              {product.scentProfile}
+            </p>
           </section>
         )}
 
@@ -170,7 +123,7 @@ export default async function ProductPage({ params }: Props) {
                   imageUrl={p.imageUrl}
                   title={p.name}
                   subtitle={p.tagline}
-                  price={p.sizes[0].price}
+                  price={p.price}
                 />
               </Link>
             ))}
