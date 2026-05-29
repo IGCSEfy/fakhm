@@ -8,9 +8,10 @@ import {
   products,
 } from "@/lib/products";
 import ProductActions from "@/components/product-actions";
+import ProductGallery from "@/components/product-gallery";
 import { Button } from "@/components/ui/button";
 import { ElitePlanCard } from "@/components/ui/elite-plan-card";
-import { PriceTag } from "@/components/ui/dirham";
+import { DiscountBadge, PriceTag } from "@/components/ui/dirham";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -60,15 +61,12 @@ export default async function ProductPage({ params }: Props) {
           </Button>
         </div>
 
-        {/* Hero: image + details */}
+        {/* Hero: gallery + details */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 mb-20">
-          <div className="relative aspect-square overflow-hidden rounded-3xl border border-white/10">
-            <img
-              src={product.imageUrl}
-              alt={product.name}
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-          </div>
+          <ProductGallery
+            images={product.images ?? [product.imageUrl]}
+            alt={product.name}
+          />
           <div className="flex flex-col gap-10">
             <div>
               <p className="text-[10px] uppercase tracking-[0.3em] text-white/50 mb-4">
@@ -124,12 +122,25 @@ export default async function ProductPage({ params }: Props) {
                   imageUrl={p.imageUrl}
                   title={p.name}
                   subtitle={p.tagline}
-                  price={
-                    <PriceTag
+                  badge={
+                    <DiscountBadge
                       cents={p.priceCents}
                       compareAtCents={p.compareAtCents}
-                      volume={p.volume}
                     />
+                  }
+                  price={
+                    <span className="flex w-full items-center justify-between gap-2">
+                      <PriceTag
+                        cents={p.priceCents}
+                        compareAtCents={p.compareAtCents}
+                        showDiscount={false}
+                      />
+                      {p.volume && (
+                        <span className="font-normal text-white/50">
+                          {p.volume}
+                        </span>
+                      )}
+                    </span>
                   }
                 />
               </Link>

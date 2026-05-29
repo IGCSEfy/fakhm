@@ -5,6 +5,7 @@ import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { X, Minus, Plus } from "lucide-react";
 import { selectSubtotalCents, useCartStore } from "@/lib/cart-store";
+import { getProductBySlug } from "@/lib/products";
 import ButtonWithIcon from "@/components/ui/button-with-icon";
 import { BagIcon } from "@/components/ui/bag-icon";
 import { Price } from "@/components/ui/dirham";
@@ -95,7 +96,15 @@ export default function CartDrawer() {
                 </div>
               ) : (
                 <ul className="flex flex-col gap-6">
-                  {items.map((item) => (
+                  {items.map((item) => {
+                    // Resolve display data from the live catalog so cart lines
+                    // always reflect the current image/name/price — never a
+                    // stale snapshot saved into localStorage at add-time.
+                    const product = getProductBySlug(item.productSlug);
+                    const imageUrl = product?.imageUrl ?? item.imageUrl;
+                    const productName = product?.name ?? item.productName;
+                    const unitPriceCents = product?.priceCents ?? item.priceCents;
+                    return (
                     <li
                       key={`${item.productSlug}::${item.sizeLabel}`}
                       className="flex gap-4"
@@ -107,8 +116,8 @@ export default function CartDrawer() {
                         className="block flex-shrink-0 w-20 h-24 overflow-hidden rounded-md bg-black"
                       >
                         <img
-                          src={item.imageUrl}
-                          alt={item.productName}
+                          src={imageUrl}
+                          alt={productName}
                           className="w-full h-full object-cover"
                         />
                       </Link>
@@ -122,7 +131,7 @@ export default function CartDrawer() {
                               onClick={closeCart}
                               className="block text-sm font-bold uppercase tracking-wider text-white hover:underline"
                             >
-                              {item.productName}
+                              {productName}
                             </Link>
                             {item.sizeLabel && (
                               <p className="text-xs text-white/50 mt-0.5">
@@ -136,7 +145,7 @@ export default function CartDrawer() {
                               removeItem(item.productSlug, item.sizeLabel)
                             }
                             className="text-white/40 hover:text-white transition-colors"
-                            aria-label={`Remove ${item.productName}`}
+                            aria-label={`Remove ${productName}`}
                           >
                             <X className="h-4 w-4" />
                           </button>
@@ -180,12 +189,13 @@ export default function CartDrawer() {
 
                           {/* Line price */}
                           <p className="text-sm font-bold text-white">
-                            <Price cents={item.priceCents * item.qty} />
+                            <Price cents={unitPriceCents * item.qty} />
                           </p>
                         </div>
                       </div>
                     </li>
-                  ))}
+                    );
+                  })}
                 </ul>
               )}
             </div>

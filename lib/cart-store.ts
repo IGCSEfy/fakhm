@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+import { getProductBySlug } from "./products";
 
 export type CartItem = {
   productSlug: string;
@@ -108,7 +109,12 @@ export const selectTotalQty = (state: CartState) =>
   state.items.reduce((sum, i) => sum + i.qty, 0);
 
 export const selectSubtotalCents = (state: CartState) =>
-  state.items.reduce((sum, i) => sum + i.priceCents * i.qty, 0);
+  state.items.reduce((sum, i) => {
+    // Prefer the live catalog price; fall back to the stored snapshot only
+    // if the product no longer exists.
+    const priceCents = getProductBySlug(i.productSlug)?.priceCents ?? i.priceCents;
+    return sum + priceCents * i.qty;
+  }, 0);
 
 /** Format a fils value as a DHS price string, e.g. "85 DHS". */
 export function formatPriceCents(cents: number): string {

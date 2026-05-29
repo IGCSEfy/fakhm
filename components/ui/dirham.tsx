@@ -68,11 +68,14 @@ export function PriceTag({
   compareAtCents,
   volume,
   className,
+  showDiscount = true,
 }: {
   cents: number;
   compareAtCents?: number;
   volume?: string;
   className?: string;
+  /** Show the inline "% Off" pill. Set false when the badge is shown elsewhere (e.g. next to a card title). */
+  showDiscount?: boolean;
 }) {
   const showCompare = compareAtCents != null && compareAtCents > cents;
   const percentOff = showCompare
@@ -91,14 +94,45 @@ export function PriceTag({
             </span>
           </span>
           {/* Discount badge */}
-          <span className="rounded-full bg-white px-2 py-0.5 text-[0.6em] font-bold uppercase leading-none tracking-wider text-black">
-            {percentOff}% Off
-          </span>
+          {showDiscount && (
+            <span className="rounded-full bg-white px-2 py-0.5 text-[0.6em] font-bold uppercase leading-none tracking-wider text-black">
+              {percentOff}% Off
+            </span>
+          )}
         </>
       )}
       {volume && (
         <span className="font-normal text-white/50">· {volume}</span>
       )}
+    </span>
+  );
+}
+
+/**
+ * Standalone discount pill (e.g. "25% Off"), sized to sit next to a title
+ * rather than inline with the price. Renders nothing when there's no discount.
+ */
+export function DiscountBadge({
+  cents,
+  compareAtCents,
+  className,
+}: {
+  cents: number;
+  compareAtCents?: number;
+  className?: string;
+}) {
+  if (compareAtCents == null || compareAtCents <= cents) return null;
+  const percentOff = Math.round((1 - cents / compareAtCents) * 100);
+  return (
+    <span
+      className={cn(
+        // Padding is in `em` so the pill stays nicely proportioned (thick,
+        // fully rounded) at whatever font size it's rendered at.
+        "inline-flex items-center rounded-full bg-white px-[0.85em] py-[0.4em] text-[10px] font-bold uppercase leading-none tracking-wider text-black",
+        className,
+      )}
+    >
+      {percentOff}% Off
     </span>
   );
 }

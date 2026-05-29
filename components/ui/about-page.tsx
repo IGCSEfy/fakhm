@@ -12,9 +12,9 @@ export default function AboutPage() {
       <section className="py-16 md:py-28 bg-background">
         <div className="mx-auto max-w-6xl space-y-2 px-6">
           <img
-            className="rounded-xl object-cover w-full h-[240px] md:h-[460px]"
-            src="/lingers.jpg"
-            alt="Dark perfume bottle in smoke — Fakhm Oud"
+            className="rounded-xl object-cover object-center w-full h-[240px] md:h-[460px]"
+            src="/products/oud-zahabi.jpg"
+            alt="Fakhm Oud — Oud Zahabi"
           />
 
           <div className="grid gap-6 md:grid-cols-2 md:gap-12 pt-8">
@@ -67,8 +67,8 @@ export default function AboutPage() {
             {/* LEFT BIG IMAGE */}
             <div className="md:flex-1">
               <img
-                src="https://images.unsplash.com/photo-1610461888750-10bfc601b874?w=1600&q=80"
-                alt="Aged amber oud — Fakhm Oud heritage"
+                src="/products/shams.jpg"
+                alt="Shams — a Fakhm Oud signature"
                 className="rounded-xl object-cover w-full h-[300px] sm:h-[360px] md:h-full"
               />
             </div>
@@ -87,11 +87,11 @@ export default function AboutPage() {
                   className="relative h-60 sm:h-64 md:h-48 w-full overflow-hidden"
                 >
                   <img
-                    src="https://images.unsplash.com/photo-1547887537-6158d64c35b3?w=1200&q=80"
-                    alt="Hand-distilled perfume bottle"
+                    src="/products/musk-rijali.jpg"
+                    alt="Fakhm Oud — Musk Rijali"
                     className="h-full w-full object-cover"
                   />
-                  <div className="absolute bottom-0 h-32 w-full bg-gradient-to-t from-black via-black/70 to-transparent" />
+                  <div className="absolute bottom-0 h-12 w-full bg-gradient-to-t from-black to-transparent" />
                 </motion.div>
                 <div className="p-6">
                   <h3 className="text-xl font-bold">Three Signatures</h3>
@@ -117,8 +117,8 @@ export default function AboutPage() {
                 className="relative overflow-hidden rounded-xl bg-muted shadow-lg"
               >
                 <img
-                  src="https://images.unsplash.com/photo-1615634260167-c8cdede054de?w=1200&q=80"
-                  alt="Crystal perfume bottle"
+                  src="/products/oud-iraqi-bhukoor-2.jpg"
+                  alt="Oud Iraqi bakhoor — oud wood chips for burning"
                   className="h-full w-full object-cover min-h-[220px] sm:min-h-[240px] md:min-h-[220px]"
                 />
                 <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent text-white">

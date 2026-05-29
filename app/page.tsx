@@ -2,47 +2,36 @@
 import React, { useEffect } from "react";
 import { motion, stagger, useAnimate } from "motion/react";
 import ButtonWithIcon from "@/components/ui/button-with-icon";
-import { ContainerScroll } from "@/components/ui/container-scroll-animation";
+import { VideoScrollHero } from "@/components/ui/video-scroll-hero";
 import Floating, {
   FloatingElement,
 } from "@/components/ui/parallax-floating";
 import { TextRevealByWord } from "@/components/ui/text-reveal";
 import { StaggerTestimonials } from "@/components/ui/stagger-testimonials";
+import Link from "next/link";
+import { products } from "@/lib/products";
 
-// Oud / perfume bottle photos — placeholders until real Fakhm Oud product photography is available.
-const exampleImages = [
-  {
-    url: "https://images.unsplash.com/photo-1610461888750-10bfc601b874?w=800&q=80",
-    title: "Amber oud bottle, dark studio",
-  },
-  {
-    url: "https://images.unsplash.com/photo-1547887537-6158d64c35b3?w=800&q=80",
-    title: "Perfume bottle, low light",
-  },
-  {
-    url: "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=800&q=80",
-    title: "Glass perfume with roses",
-  },
-  {
-    url: "https://images.unsplash.com/photo-1615634260167-c8cdede054de?w=800&q=80",
-    title: "Crystal perfume bottle",
-  },
-  {
-    url: "https://images.unsplash.com/photo-1541643600914-78b084683601?w=800&q=80",
-    title: "Vintage perfume bottle",
-  },
-  {
-    url: "https://images.unsplash.com/photo-1594035910387-fea47794261f?w=800&q=80",
-    title: "Minimalist perfume bottle",
-  },
-  {
-    url: "https://images.unsplash.com/photo-1610461888750-10bfc601b874?w=800&q=80",
-    title: "Dark amber oud bottle",
-  },
-  {
-    url: "https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=800&q=80",
-    title: "Dark cologne bottle",
-  },
+// Real product photos for the hero scatter — each image links to its product
+// page. Includes every product's cover plus the extra gallery shots some
+// products have (9 images across 8 scatter slots, so all products appear).
+const galleryImages = [
+  ...products.map((p) => ({ src: p.imageUrl, slug: p.slug, name: p.name })),
+  ...products.flatMap((p) =>
+    (p.images ?? []).slice(1).map((src) => ({ src, slug: p.slug, name: p.name })),
+  ),
+];
+
+// Scatter positions + sizes, tuned for visual balance (kept from the original
+// layout). Each entry lines up by index with galleryImages.
+const galleryPositions: { depth: number; position: string; size: string }[] = [
+  { depth: 0.5, position: "top-[8%] left-[11%]", size: "w-16 h-16 md:w-24 md:h-24" },
+  { depth: 1, position: "top-[10%] left-[32%]", size: "w-20 h-20 md:w-28 md:h-28" },
+  { depth: 2, position: "top-[2%] left-[53%]", size: "w-28 h-40 md:w-40 md:h-52" },
+  { depth: 1, position: "top-[0%] left-[83%]", size: "w-24 h-24 md:w-32 md:h-32" },
+  { depth: 1, position: "top-[40%] left-[2%] hidden sm:block", size: "w-28 h-28 md:w-36 md:h-36" },
+  { depth: 2, position: "top-[70%] left-[77%]", size: "w-28 h-28 md:w-36 md:h-48" },
+  { depth: 4, position: "top-[73%] left-[15%]", size: "w-40 md:w-52 h-full" },
+  { depth: 1, position: "top-[80%] left-[50%] hidden sm:block", size: "w-24 h-24 md:w-32 md:h-32" },
 ];
 
 function ParallaxGallery() {
@@ -75,64 +64,21 @@ function ParallaxGallery() {
       </motion.div>
 
       <Floating sensitivity={-1} className="overflow-hidden">
-        <FloatingElement depth={0.5} className="top-[8%] left-[11%]">
-          <motion.img
-            initial={{ opacity: 0 }}
-            src={exampleImages[0].url}
-            className="w-16 h-16 md:w-24 md:h-24 object-cover hover:scale-105 duration-200 cursor-pointer transition-transform"
-          />
-        </FloatingElement>
-        <FloatingElement depth={1} className="top-[10%] left-[32%]">
-          <motion.img
-            initial={{ opacity: 0 }}
-            src={exampleImages[1].url}
-            className="w-20 h-20 md:w-28 md:h-28 object-cover hover:scale-105 duration-200 cursor-pointer transition-transform"
-          />
-        </FloatingElement>
-        <FloatingElement depth={2} className="top-[2%] left-[53%]">
-          <motion.img
-            initial={{ opacity: 0 }}
-            src={exampleImages[2].url}
-            className="w-28 h-40 md:w-40 md:h-52 object-cover hover:scale-105 duration-200 cursor-pointer transition-transform"
-          />
-        </FloatingElement>
-        <FloatingElement depth={1} className="top-[0%] left-[83%]">
-          <motion.img
-            initial={{ opacity: 0 }}
-            src={exampleImages[3].url}
-            className="w-24 h-24 md:w-32 md:h-32 object-cover hover:scale-105 duration-200 cursor-pointer transition-transform"
-          />
-        </FloatingElement>
-
-        <FloatingElement depth={1} className="top-[40%] left-[2%] hidden sm:block">
-          <motion.img
-            initial={{ opacity: 0 }}
-            src={exampleImages[4].url}
-            className="w-28 h-28 md:w-36 md:h-36 object-cover hover:scale-105 duration-200 cursor-pointer transition-transform"
-          />
-        </FloatingElement>
-        <FloatingElement depth={2} className="top-[70%] left-[77%]">
-          <motion.img
-            initial={{ opacity: 0 }}
-            src={exampleImages[7].url}
-            className="w-28 h-28 md:w-36 md:h-48 object-cover hover:scale-105 duration-200 cursor-pointer transition-transform"
-          />
-        </FloatingElement>
-
-        <FloatingElement depth={4} className="top-[73%] left-[15%]">
-          <motion.img
-            initial={{ opacity: 0 }}
-            src={exampleImages[5].url}
-            className="w-40 md:w-52 h-full object-cover hover:scale-105 duration-200 cursor-pointer transition-transform"
-          />
-        </FloatingElement>
-        <FloatingElement depth={1} className="top-[80%] left-[50%] hidden sm:block">
-          <motion.img
-            initial={{ opacity: 0 }}
-            src={exampleImages[6].url}
-            className="w-24 h-24 md:w-32 md:h-32 object-cover hover:scale-105 duration-200 cursor-pointer transition-transform"
-          />
-        </FloatingElement>
+        {galleryPositions.map((slot, i) => {
+          const img = galleryImages[i % galleryImages.length];
+          return (
+            <FloatingElement key={i} depth={slot.depth} className={slot.position}>
+              <Link href={`/shop/${img.slug}`} aria-label={img.name}>
+                <motion.img
+                  initial={{ opacity: 0 }}
+                  src={img.src}
+                  alt={img.name}
+                  className={`${slot.size} object-cover hover:scale-105 duration-200 cursor-pointer transition-transform`}
+                />
+              </Link>
+            </FloatingElement>
+          );
+        })}
       </Floating>
     </div>
   );
@@ -143,22 +89,11 @@ export default function Home() {
     <>
       <ParallaxGallery />
       <TextRevealByWord text="Every bottle tells a story. Every scent leaves a mark." />
-      <div className="flex flex-col overflow-hidden">
-        <ContainerScroll
-          titleComponent={
-            <h1 className="text-4xl md:text-6xl font-bold leading-tight text-black dark:text-white">
-              A scent that lingers.
-            </h1>
-          }
-        >
-          <img
-            src="/lingers.jpg"
-            alt="Black perfume bottle in smoke — a scent that lingers"
-            className="mx-auto rounded-2xl object-cover h-full w-full"
-            draggable={false}
-          />
-        </ContainerScroll>
-      </div>
+      <VideoScrollHero
+        videoSrc="/lingers.mp4"
+        title="A scent that lingers."
+        subtitle=""
+      />
       <section className="bg-background pt-8 pb-20">
         <div className="max-w-6xl mx-auto px-6 mb-8 text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-white">

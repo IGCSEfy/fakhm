@@ -15,7 +15,10 @@ export type Product = {
   compareAtCents?: number;
   /** Volume / quantity, e.g. "6ml" or "25g". */
   volume: string;
+  /** Primary image — used on cards and as the default detail image. */
   imageUrl: string;
+  /** Optional extra images for the product-page gallery (includes the primary). */
+  images?: string[];
 };
 
 export const products: Product[] = [
@@ -32,8 +35,8 @@ export const products: Product[] = [
     priceCents: 4500,
     compareAtCents: 6000,
     volume: "6ml",
-    imageUrl:
-      "https://images.unsplash.com/photo-1610461888750-10bfc601b874?w=1600&q=80",
+    imageUrl: "/products/shams.jpg",
+    images: ["/products/shams.jpg", "/products/shams-2.jpg"],
   },
   {
     slug: "qamr",
@@ -48,8 +51,8 @@ export const products: Product[] = [
     priceCents: 4500,
     compareAtCents: 6000,
     volume: "6ml",
-    imageUrl:
-      "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=1600&q=80",
+    imageUrl: "/products/qamr.jpg",
+    images: ["/products/qamr.jpg", "/products/qamr-2.jpg"],
   },
   {
     slug: "falaq",
@@ -64,8 +67,8 @@ export const products: Product[] = [
     priceCents: 4500,
     compareAtCents: 6000,
     volume: "6ml",
-    imageUrl:
-      "https://images.unsplash.com/photo-1547887537-6158d64c35b3?w=1600&q=80",
+    imageUrl: "/products/falaq.jpg",
+    images: ["/products/falaq.jpg", "/products/falaq-2.jpg"],
   },
   {
     slug: "oud-zahabi",
@@ -80,8 +83,7 @@ export const products: Product[] = [
     priceCents: 3000,
     compareAtCents: 4000,
     volume: "6ml",
-    imageUrl:
-      "https://images.unsplash.com/photo-1594035910387-fea47794261f?w=1600&q=80",
+    imageUrl: "/products/oud-zahabi.jpg",
   },
   {
     slug: "musk-rijali",
@@ -96,8 +98,7 @@ export const products: Product[] = [
     priceCents: 4000,
     compareAtCents: 5300,
     volume: "12ml",
-    imageUrl:
-      "https://images.unsplash.com/photo-1615634260167-c8cdede054de?w=1600&q=80",
+    imageUrl: "/products/musk-rijali.jpg",
   },
   {
     slug: "oud-iraqi-bhukoor",
@@ -111,8 +112,11 @@ export const products: Product[] = [
     priceCents: 2500,
     compareAtCents: 3570,
     volume: "25g",
-    imageUrl:
-      "https://images.unsplash.com/photo-1541643600914-78b084683601?w=1600&q=80",
+    imageUrl: "/products/oud-iraqi-bhukoor.jpg",
+    images: [
+      "/products/oud-iraqi-bhukoor.jpg",
+      "/products/oud-iraqi-bhukoor-2.jpg",
+    ],
   },
 ];
 

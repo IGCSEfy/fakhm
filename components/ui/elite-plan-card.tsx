@@ -23,6 +23,8 @@ interface ElitePlanCardProps extends SafeDivProps {
   imageUrl: string;
   title: string;
   subtitle: string;
+  /** Optional node rendered inline next to the title (e.g. a discount badge). */
+  badge?: React.ReactNode;
   /** Optional. Rendered prominently below the title (white, bold). */
   price?: React.ReactNode;
   /** Optional long-form copy below the title/price. */
@@ -51,6 +53,7 @@ export const ElitePlanCard = React.forwardRef<
       imageUrl,
       title,
       subtitle,
+      badge,
       price,
       description,
       highlights = [],
@@ -98,7 +101,7 @@ export const ElitePlanCard = React.forwardRef<
             />
             {/* Fade between image and the dark content panel — vertical only */}
             {!isHorizontal && (
-              <div className="absolute bottom-0 h-32 w-full bg-gradient-to-t from-black via-black/80 to-transparent" />
+              <div className="absolute bottom-0 h-10 w-full bg-gradient-to-t from-black to-transparent" />
             )}
           </motion.div>
 
@@ -122,16 +125,26 @@ export const ElitePlanCard = React.forwardRef<
               >
                 {subtitle}
               </p>
-              <h3
+              <div
                 className={cn(
-                  "font-bold uppercase text-white",
-                  isHorizontal
-                    ? "text-5xl md:text-6xl leading-none mb-6"
-                    : "mt-1 text-2xl",
+                  "flex items-center gap-3 flex-wrap",
+                  isHorizontal ? "mb-6" : "mt-1",
                 )}
               >
-                {title}
-              </h3>
+                <h3
+                  className={cn(
+                    "font-bold uppercase text-white",
+                    isHorizontal
+                      ? "text-5xl md:text-6xl leading-none"
+                      : "text-2xl",
+                  )}
+                >
+                  {title}
+                </h3>
+                {/* Vertical cards show the badge by the title; horizontal
+                    (featured) shows it above the price instead. */}
+                {!isHorizontal && badge}
+              </div>
 
               {/* In vertical layout, price sits right under the title.
                   In horizontal, it goes in the bottom row alongside the CTA. */}
@@ -155,10 +168,14 @@ export const ElitePlanCard = React.forwardRef<
 
             {/* Horizontal-only bottom row: price + Shop CTA pill */}
             {isHorizontal && (
-              <div className="flex items-center justify-between gap-4 flex-wrap">
-                {price && (
-                  <p className="text-2xl font-bold text-white">{price}</p>
-                )}
+              <div className="flex items-end justify-between gap-4 flex-wrap">
+                <div className="flex flex-col items-start gap-2">
+                  {/* Discount badge sits above the price */}
+                  {badge}
+                  {price && (
+                    <p className="text-2xl font-bold text-white">{price}</p>
+                  )}
+                </div>
                 {onAction ? (
                   <ButtonWithIcon onClick={onAction}>
                     {actionLabel}

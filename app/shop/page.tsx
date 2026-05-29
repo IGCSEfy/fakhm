@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Clock, Sparkles, Package, RotateCcw } from "lucide-react";
 import { ElitePlanCard } from "@/components/ui/elite-plan-card";
 import ButtonWithIcon from "@/components/ui/button-with-icon";
-import { Dirham, Price, PriceTag } from "@/components/ui/dirham";
+import { Dirham, DiscountBadge, Price, PriceTag } from "@/components/ui/dirham";
 import { products } from "@/lib/products";
 
 const featuredProduct = products[0];
@@ -33,11 +33,18 @@ export default function ShopPage() {
             imageUrl={featuredProduct.imageUrl}
             title={featuredProduct.name}
             subtitle={`Featured · ${featuredProduct.tagline}`}
+            badge={
+              <DiscountBadge
+                cents={featuredProduct.priceCents}
+                compareAtCents={featuredProduct.compareAtCents}
+              />
+            }
             price={
               <PriceTag
                 cents={featuredProduct.priceCents}
                 compareAtCents={featuredProduct.compareAtCents}
                 volume={featuredProduct.volume}
+                showDiscount={false}
               />
             }
             description={featuredProduct.shortDescription}
@@ -60,12 +67,25 @@ export default function ShopPage() {
                   imageUrl={p.imageUrl}
                   title={p.name}
                   subtitle={p.tagline}
-                  price={
-                    <PriceTag
+                  badge={
+                    <DiscountBadge
                       cents={p.priceCents}
                       compareAtCents={p.compareAtCents}
-                      volume={p.volume}
                     />
+                  }
+                  price={
+                    <span className="flex w-full items-center justify-between gap-2">
+                      <PriceTag
+                        cents={p.priceCents}
+                        compareAtCents={p.compareAtCents}
+                        showDiscount={false}
+                      />
+                      {p.volume && (
+                        <span className="font-normal text-white/50">
+                          {p.volume}
+                        </span>
+                      )}
+                    </span>
                   }
                 />
               </Link>
