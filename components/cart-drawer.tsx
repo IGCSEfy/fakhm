@@ -4,13 +4,10 @@ import React from "react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { X, Minus, Plus } from "lucide-react";
-import {
-  formatPriceCents,
-  selectSubtotalCents,
-  useCartStore,
-} from "@/lib/cart-store";
+import { selectSubtotalCents, useCartStore } from "@/lib/cart-store";
 import ButtonWithIcon from "@/components/ui/button-with-icon";
 import { BagIcon } from "@/components/ui/bag-icon";
+import { Price } from "@/components/ui/dirham";
 
 export default function CartDrawer() {
   const isOpen = useCartStore((s) => s.isOpen);
@@ -183,7 +180,7 @@ export default function CartDrawer() {
 
                           {/* Line price */}
                           <p className="text-sm font-bold text-white">
-                            {formatPriceCents(item.priceCents * item.qty)}
+                            <Price cents={item.priceCents * item.qty} />
                           </p>
                         </div>
                       </div>
@@ -201,7 +198,7 @@ export default function CartDrawer() {
                     Subtotal
                   </p>
                   <p className="text-lg font-bold text-white">
-                    {formatPriceCents(subtotalCents)}
+                    <Price cents={subtotalCents} />
                   </p>
                 </div>
                 <p className="text-[10px] uppercase tracking-widest text-white/40 text-center">

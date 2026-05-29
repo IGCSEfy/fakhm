@@ -24,7 +24,7 @@ interface ElitePlanCardProps extends SafeDivProps {
   title: string;
   subtitle: string;
   /** Optional. Rendered prominently below the title (white, bold). */
-  price?: string;
+  price?: React.ReactNode;
   /** Optional volume/quantity shown muted next to the price, e.g. "6ml". */
   volume?: string;
   /** Optional long-form copy below the title/price. */

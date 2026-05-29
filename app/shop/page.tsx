@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Clock, Sparkles, Package, RotateCcw } from "lucide-react";
 import { ElitePlanCard } from "@/components/ui/elite-plan-card";
 import ButtonWithIcon from "@/components/ui/button-with-icon";
+import { Dirham, Price } from "@/components/ui/dirham";
 import { products } from "@/lib/products";
 
 const featuredProduct = products[0];
@@ -18,7 +19,7 @@ export default function ShopPage() {
           </h1>
           <p className="text-white/60 max-w-xl text-base font-normal">
             Oud-forward attars and bakhoor, blended to last. Free shipping on
-            orders over 200 DHS.
+            orders over 200<Dirham className="ms-1" />.
           </p>
         </div>
 
@@ -32,7 +33,7 @@ export default function ShopPage() {
             imageUrl={featuredProduct.imageUrl}
             title={featuredProduct.name}
             subtitle={`Featured · ${featuredProduct.tagline}`}
-            price={featuredProduct.price}
+            price={<Price cents={featuredProduct.priceCents} />}
             volume={featuredProduct.volume}
             description={featuredProduct.shortDescription}
           />
@@ -54,7 +55,7 @@ export default function ShopPage() {
                   imageUrl={p.imageUrl}
                   title={p.name}
                   subtitle={p.tagline}
-                  price={p.price}
+                  price={<Price cents={p.priceCents} />}
                   volume={p.volume}
                 />
               </Link>
@@ -78,7 +79,7 @@ export default function ShopPage() {
             {
               icon: <Package className="h-5 w-5" />,
               label: "Free Shipping",
-              detail: "On orders over 200 DHS",
+              detail: "On orders over 200 dirham",
             },
             {
               icon: <RotateCcw className="h-5 w-5" />,
@@ -158,7 +159,7 @@ export default function ShopPage() {
             Start with Musk Rijali.
           </h3>
           <ButtonWithIcon href="/shop/musk-rijali">
-            Shop Musk Rijali — 40 DHS
+            Shop Musk Rijali — <Price cents={4000} />
           </ButtonWithIcon>
         </div>
       </div>
