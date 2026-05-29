@@ -10,6 +10,7 @@ import {
 import ProductActions from "@/components/product-actions";
 import { Button } from "@/components/ui/button";
 import { ElitePlanCard } from "@/components/ui/elite-plan-card";
+import { PriceTag } from "@/components/ui/dirham";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -123,7 +124,9 @@ export default async function ProductPage({ params }: Props) {
                   imageUrl={p.imageUrl}
                   title={p.name}
                   subtitle={p.tagline}
-                  price={p.price}
+                  price={
+                    <PriceTag cents={p.priceCents} compareAtCents={p.compareAtCents} />
+                  }
                   volume={p.volume}
                 />
               </Link>

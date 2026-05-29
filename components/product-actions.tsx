@@ -4,7 +4,7 @@ import React from "react";
 import { useCartStore } from "@/lib/cart-store";
 import type { Product } from "@/lib/products";
 import ButtonWithIcon from "@/components/ui/button-with-icon";
-import { Price } from "@/components/ui/dirham";
+import { PriceTag } from "@/components/ui/dirham";
 
 type Props = {
   product: Product;
@@ -27,7 +27,10 @@ export default function ProductActions({ product }: Props) {
   return (
     <div className="flex flex-wrap items-center justify-between gap-4 mt-auto pt-4 border-t border-white/10">
       <p className="text-3xl font-bold text-white">
-        <Price cents={product.priceCents} />
+        <PriceTag
+          cents={product.priceCents}
+          compareAtCents={product.compareAtCents}
+        />
         <span className="ml-2 text-base font-normal text-white/50">
           · {product.volume}
         </span>

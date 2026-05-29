@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Clock, Sparkles, Package, RotateCcw } from "lucide-react";
 import { ElitePlanCard } from "@/components/ui/elite-plan-card";
 import ButtonWithIcon from "@/components/ui/button-with-icon";
-import { Dirham, Price } from "@/components/ui/dirham";
+import { Dirham, Price, PriceTag } from "@/components/ui/dirham";
 import { products } from "@/lib/products";
 
 const featuredProduct = products[0];
@@ -33,7 +33,12 @@ export default function ShopPage() {
             imageUrl={featuredProduct.imageUrl}
             title={featuredProduct.name}
             subtitle={`Featured · ${featuredProduct.tagline}`}
-            price={<Price cents={featuredProduct.priceCents} />}
+            price={
+              <PriceTag
+                cents={featuredProduct.priceCents}
+                compareAtCents={featuredProduct.compareAtCents}
+              />
+            }
             volume={featuredProduct.volume}
             description={featuredProduct.shortDescription}
           />
@@ -55,7 +60,12 @@ export default function ShopPage() {
                   imageUrl={p.imageUrl}
                   title={p.name}
                   subtitle={p.tagline}
-                  price={<Price cents={p.priceCents} />}
+                  price={
+                    <PriceTag
+                      cents={p.priceCents}
+                      compareAtCents={p.compareAtCents}
+                    />
+                  }
                   volume={p.volume}
                 />
               </Link>

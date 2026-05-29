@@ -55,3 +55,31 @@ export function Price({
     </span>
   );
 }
+
+/**
+ * Current price, with an optional struck-through "was" price beside it for
+ * anchoring. The compare price is only shown when it's higher than the
+ * current price.
+ */
+export function PriceTag({
+  cents,
+  compareAtCents,
+  className,
+}: {
+  cents: number;
+  compareAtCents?: number;
+  className?: string;
+}) {
+  const showCompare = compareAtCents != null && compareAtCents > cents;
+  return (
+    <span className={className}>
+      <Price cents={cents} />
+      {showCompare && (
+        <Price
+          cents={compareAtCents}
+          className="ms-2 text-[0.7em] font-normal text-white/40 line-through"
+        />
+      )}
+    </span>
+  );
+}
