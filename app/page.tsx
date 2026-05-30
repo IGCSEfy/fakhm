@@ -90,7 +90,6 @@ export default function Home() {
       <ScrollExpandMedia
         mediaType="video"
         mediaSrc="/lingers.mp4"
-        bgImageSrc="/lingers.jpg"
         title="A scent that lingers."
         scrollToExpand="Scroll to expand"
       >

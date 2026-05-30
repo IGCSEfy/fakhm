@@ -8,7 +8,7 @@ interface ScrollExpandMediaProps {
   mediaType?: 'video' | 'image';
   mediaSrc: string;
   posterSrc?: string;
-  bgImageSrc: string;
+  bgImageSrc?: string;
   title?: string;
   date?: string;
   scrollToExpand?: string;
@@ -82,22 +82,24 @@ const ScrollExpandMedia = ({
 
   return (
     <>
-      <section ref={trackRef} className="relative" style={{ height: '200vh' }}>
+      <section ref={trackRef} className="relative" style={{ height: '160vh' }}>
       <div className="sticky top-0 h-screen w-full overflow-hidden">
-        {/* Background image — fades out as the media expands */}
-        <motion.div
-          className="absolute inset-0 z-0"
-          style={{ opacity: 1 - scrollProgress }}
-        >
-          <Image
-            src={bgImageSrc}
-            alt=""
-            fill
-            priority
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-black/10" />
-        </motion.div>
+        {/* Optional background image — fades out as the media expands */}
+        {bgImageSrc && (
+          <motion.div
+            className="absolute inset-0 z-0"
+            style={{ opacity: 1 - scrollProgress }}
+          >
+            <Image
+              src={bgImageSrc}
+              alt=""
+              fill
+              priority
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-black/10" />
+          </motion.div>
+        )}
 
         <div className="relative z-10 flex h-full w-full items-center justify-center">
           {/* Expanding media */}
@@ -221,7 +223,7 @@ const ScrollExpandMedia = ({
 
       {children && (
         <motion.section
-          className="relative z-10 flex flex-col w-full px-8 py-24 md:px-16 md:py-32"
+          className="relative z-10 flex flex-col w-full px-8 pt-16 pb-32 md:px-16"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
