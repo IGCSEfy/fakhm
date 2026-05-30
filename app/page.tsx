@@ -2,11 +2,10 @@
 import React, { useEffect } from "react";
 import { motion, stagger, useAnimate } from "motion/react";
 import ButtonWithIcon from "@/components/ui/button-with-icon";
-import { VideoScrollHero } from "@/components/ui/video-scroll-hero";
+import ScrollExpandMedia from "@/components/ui/scroll-expansion-hero";
 import Floating, {
   FloatingElement,
 } from "@/components/ui/parallax-floating";
-import { TextRevealByWord } from "@/components/ui/text-reveal";
 import { StaggerTestimonials } from "@/components/ui/stagger-testimonials";
 import Link from "next/link";
 import { products } from "@/lib/products";
@@ -88,13 +87,33 @@ export default function Home() {
   return (
     <>
       <ParallaxGallery />
-      <TextRevealByWord text="Every bottle tells a story. Every scent leaves a mark." />
-      <VideoScrollHero
-        videoSrc="/lingers.mp4"
+      <ScrollExpandMedia
+        mediaType="video"
+        mediaSrc="/lingers.mp4"
+        bgImageSrc="/lingers.jpg"
         title="A scent that lingers."
-        subtitle=""
-      />
-      <section className="bg-background pt-8 pb-20">
+        scrollToExpand="Scroll to expand"
+      >
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold mb-8 text-white">
+            The world&apos;s finest bakhoor.
+          </h2>
+          <p className="text-lg mb-10 text-white/80">
+            Oud Iraqi Bhukoor is traditional bakhoor — oud-soaked wood chips
+            meant to be burned over charcoal or in an electric burner. A few
+            minutes fills a room with deep, smoky oud.
+          </p>
+          <p className="text-lg mb-10 text-white/80">
+            The classic way to scent a home and welcome guests: rich,
+            long-lasting, and unmistakably oud — the finest Iraqi bakhoor, made
+            approachable.
+          </p>
+          <ButtonWithIcon href="/shop/oud-iraqi-bhukoor">
+            Shop Oud Iraqi Bhukoor
+          </ButtonWithIcon>
+        </div>
+      </ScrollExpandMedia>
+      <section className="bg-background pt-20 pb-20">
         <div className="max-w-6xl mx-auto px-6 mb-8 text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-white">
             What people say
