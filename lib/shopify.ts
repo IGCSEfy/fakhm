@@ -11,7 +11,8 @@
  * ships to the browser at all.
  */
 
-const DOMAIN = process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN ?? "";
+const DOMAIN =
+  process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN ?? "fakhm-oud.myshopify.com";
 const TOKEN = process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN ?? "";
 
 /** True once the store credentials are configured. */

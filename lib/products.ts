@@ -43,6 +43,7 @@ export const products: Product[] = [
     priceCents: 4500,
     compareAtCents: 6000,
     volume: "6ml",
+    shopifyVariantId: "53097431007599",
     imageUrl: "/products/shams.jpg",
     images: ["/products/shams.jpg", "/products/shams-2.jpg"],  },
   {
@@ -58,6 +59,7 @@ export const products: Product[] = [
     priceCents: 4500,
     compareAtCents: 6000,
     volume: "6ml",
+    shopifyVariantId: "53097432121711",
     imageUrl: "/products/qamr.jpg",
     images: ["/products/qamr.jpg", "/products/qamr-2.jpg"],  },
   {
@@ -73,6 +75,7 @@ export const products: Product[] = [
     priceCents: 4500,
     compareAtCents: 6000,
     volume: "6ml",
+    shopifyVariantId: "53097433104751",
     imageUrl: "/products/falaq.jpg",
     images: ["/products/falaq.jpg", "/products/falaq-2.jpg"],  },
   {
@@ -88,6 +91,7 @@ export const products: Product[] = [
     priceCents: 3000,
     compareAtCents: 4000,
     volume: "6ml",
+    shopifyVariantId: "53097433629039",
     imageUrl: "/products/oud-zahabi.jpg",  },
   {
     slug: "musk-rijali",
@@ -102,6 +106,7 @@ export const products: Product[] = [
     priceCents: 4000,
     compareAtCents: 5300,
     volume: "12ml",
+    shopifyVariantId: "53097434972527",
     imageUrl: "/products/musk-rijali.jpg",  },
   {
     slug: "oud-iraqi-bhukoor",
@@ -115,6 +120,7 @@ export const products: Product[] = [
     priceCents: 2500,
     compareAtCents: 3570,
     volume: "25g",
+    shopifyVariantId: "53097435103599",
     imageUrl: "/products/oud-iraqi-bhukoor.jpg",
     images: [
       "/products/oud-iraqi-bhukoor.jpg",
