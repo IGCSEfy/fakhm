@@ -21,6 +21,7 @@ export default function ProductActions({ product }: Props) {
       priceLabel: product.price,
       priceCents: product.priceCents,
       imageUrl: product.imageUrl,
+      shopifyVariantId: product.shopifyVariantId,
     });
   };
 

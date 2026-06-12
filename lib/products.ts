@@ -19,6 +19,14 @@ export type Product = {
   imageUrl: string;
   /** Optional extra images for the product-page gallery (includes the primary). */
   images?: string[];
+  /**
+   * Shopify ProductVariant numeric ID, used to build the checkout permalink.
+   * Populated automatically at request time by `getCatalog()` in lib/catalog.ts
+   * (matched to Shopify by handle == slug). Undefined until Shopify is connected.
+   */
+  shopifyVariantId?: string;
+  /** Live stock status from Shopify. Defaults to true (in stock) as a fallback. */
+  availableForSale?: boolean;
 };
 
 export const products: Product[] = [
@@ -36,8 +44,7 @@ export const products: Product[] = [
     compareAtCents: 6000,
     volume: "6ml",
     imageUrl: "/products/shams.jpg",
-    images: ["/products/shams.jpg", "/products/shams-2.jpg"],
-  },
+    images: ["/products/shams.jpg", "/products/shams-2.jpg"],  },
   {
     slug: "qamr",
     name: "Qamr",
@@ -52,8 +59,7 @@ export const products: Product[] = [
     compareAtCents: 6000,
     volume: "6ml",
     imageUrl: "/products/qamr.jpg",
-    images: ["/products/qamr.jpg", "/products/qamr-2.jpg"],
-  },
+    images: ["/products/qamr.jpg", "/products/qamr-2.jpg"],  },
   {
     slug: "falaq",
     name: "Falaq",
@@ -68,8 +74,7 @@ export const products: Product[] = [
     compareAtCents: 6000,
     volume: "6ml",
     imageUrl: "/products/falaq.jpg",
-    images: ["/products/falaq.jpg", "/products/falaq-2.jpg"],
-  },
+    images: ["/products/falaq.jpg", "/products/falaq-2.jpg"],  },
   {
     slug: "oud-zahabi",
     name: "Oud Zahabi",
@@ -83,8 +88,7 @@ export const products: Product[] = [
     priceCents: 3000,
     compareAtCents: 4000,
     volume: "6ml",
-    imageUrl: "/products/oud-zahabi.jpg",
-  },
+    imageUrl: "/products/oud-zahabi.jpg",  },
   {
     slug: "musk-rijali",
     name: "Musk Rijali",
@@ -98,8 +102,7 @@ export const products: Product[] = [
     priceCents: 4000,
     compareAtCents: 5300,
     volume: "12ml",
-    imageUrl: "/products/musk-rijali.jpg",
-  },
+    imageUrl: "/products/musk-rijali.jpg",  },
   {
     slug: "oud-iraqi-bhukoor",
     name: "Oud Iraqi Bhukoor",
@@ -116,8 +119,7 @@ export const products: Product[] = [
     images: [
       "/products/oud-iraqi-bhukoor.jpg",
       "/products/oud-iraqi-bhukoor-2.jpg",
-    ],
-  },
+    ],  },
 ];
 
 export function getProductBySlug(slug: string): Product | undefined {

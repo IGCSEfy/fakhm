@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { getProductBySlug } from "./products";
+import { buildCheckoutUrl } from "./shopify";
 
 export type CartItem = {
   productSlug: string;
@@ -8,9 +8,14 @@ export type CartItem = {
   sizeLabel: string;
   /** Display price string, e.g. "45 DHS" */
   priceLabel: string;
-  /** Numeric price in cents, used for subtotal */
+  /** Numeric price in cents — captured (live) at add-time. */
   priceCents: number;
   imageUrl: string;
+  /**
+   * Shopify variant ID captured at add-time. Required to build the checkout
+   * permalink. Undefined only if the item was added before Shopify connected.
+   */
+  shopifyVariantId?: string;
   qty: number;
 };
 
@@ -18,12 +23,10 @@ type CartState = {
   items: CartItem[];
   isOpen: boolean;
 
-  // UI actions
   openCart: () => void;
   closeCart: () => void;
   toggleCart: () => void;
 
-  // Cart actions
   addItem: (item: Omit<CartItem, "qty"> & { qty?: number }) => void;
   removeItem: (productSlug: string, sizeLabel: string) => void;
   updateQty: (productSlug: string, sizeLabel: string, qty: number) => void;
@@ -54,6 +57,12 @@ export const useCartStore = create<CartState>()(
             const items = [...state.items];
             items[existingIndex] = {
               ...items[existingIndex],
+              // Refresh the variant ID / price snapshot on re-add so an older
+              // line picks up Shopify data once it's connected.
+              shopifyVariantId:
+                incoming.shopifyVariantId ??
+                items[existingIndex].shopifyVariantId,
+              priceCents: incoming.priceCents ?? items[existingIndex].priceCents,
               qty: items[existingIndex].qty + qty,
             };
             return { items, isOpen: true };
@@ -104,17 +113,25 @@ export const useCartStore = create<CartState>()(
   ),
 );
 
-// Selectors — call as useCartStore(selectTotalQty) etc.
+// ─── Selectors ────────────────────────────────────────────────────────────────
+
 export const selectTotalQty = (state: CartState) =>
   state.items.reduce((sum, i) => sum + i.qty, 0);
 
 export const selectSubtotalCents = (state: CartState) =>
-  state.items.reduce((sum, i) => {
-    // Prefer the live catalog price; fall back to the stored snapshot only
-    // if the product no longer exists.
-    const priceCents = getProductBySlug(i.productSlug)?.priceCents ?? i.priceCents;
-    return sum + priceCents * i.qty;
-  }, 0);
+  state.items.reduce((sum, i) => sum + i.priceCents * i.qty, 0);
+
+/**
+ * Build the Shopify checkout permalink from the current cart. Returns null
+ * when no line has a known variant ID (Shopify not connected yet) — the cart
+ * UI uses that to keep the Checkout button disabled with a clear message.
+ */
+export const selectCheckoutUrl = (state: CartState): string | null =>
+  buildCheckoutUrl(
+    state.items.map((i) => ({ variantId: i.shopifyVariantId, qty: i.qty })),
+  );
+
+// ─── Formatters ───────────────────────────────────────────────────────────────
 
 /** Format a fils value as a DHS price string, e.g. "85 DHS". */
 export function formatPriceCents(cents: number): string {

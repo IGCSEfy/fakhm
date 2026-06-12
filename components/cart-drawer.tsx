@@ -4,7 +4,11 @@ import React from "react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { X, Minus, Plus } from "lucide-react";
-import { selectSubtotalCents, useCartStore } from "@/lib/cart-store";
+import {
+  selectCheckoutUrl,
+  selectSubtotalCents,
+  useCartStore,
+} from "@/lib/cart-store";
 import { getProductBySlug } from "@/lib/products";
 import ButtonWithIcon from "@/components/ui/button-with-icon";
 import { BagIcon } from "@/components/ui/bag-icon";
@@ -17,6 +21,7 @@ export default function CartDrawer() {
   const updateQty = useCartStore((s) => s.updateQty);
   const removeItem = useCartStore((s) => s.removeItem);
   const subtotalCents = useCartStore(selectSubtotalCents);
+  const checkoutUrl = useCartStore(selectCheckoutUrl);
 
   // Lock body scroll while open
   React.useEffect(() => {
@@ -97,13 +102,14 @@ export default function CartDrawer() {
               ) : (
                 <ul className="flex flex-col gap-6">
                   {items.map((item) => {
-                    // Resolve display data from the live catalog so cart lines
-                    // always reflect the current image/name/price — never a
-                    // stale snapshot saved into localStorage at add-time.
+                    // Image + name come from the static editorial catalog so a
+                    // line never shows a stale snapshot (e.g. an old image saved
+                    // in localStorage). Price uses the value captured at add-time,
+                    // which was the live Shopify price when the item was added.
                     const product = getProductBySlug(item.productSlug);
                     const imageUrl = product?.imageUrl ?? item.imageUrl;
                     const productName = product?.name ?? item.productName;
-                    const unitPriceCents = product?.priceCents ?? item.priceCents;
+                    const unitPriceCents = item.priceCents;
                     return (
                     <li
                       key={`${item.productSlug}::${item.sizeLabel}`}
@@ -214,9 +220,25 @@ export default function CartDrawer() {
                 <p className="text-[10px] uppercase tracking-widest text-white/40 text-center">
                   Shipping &amp; taxes calculated at checkout
                 </p>
-                <ButtonWithIcon fullWidth disabled>
-                  Checkout — Coming Soon
-                </ButtonWithIcon>
+                {checkoutUrl ? (
+                  <ButtonWithIcon
+                    fullWidth
+                    onClick={() => {
+                      window.location.href = checkoutUrl;
+                    }}
+                  >
+                    Checkout
+                  </ButtonWithIcon>
+                ) : (
+                  <>
+                    <ButtonWithIcon fullWidth disabled>
+                      Checkout
+                    </ButtonWithIcon>
+                    <p className="text-[10px] uppercase tracking-widest text-amber-400/70 text-center">
+                      Re-add items to enable checkout
+                    </p>
+                  </>
+                )}
               </div>
             )}
           </motion.aside>

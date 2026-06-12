@@ -3,12 +3,13 @@ import { Clock, Sparkles, Package, RotateCcw } from "lucide-react";
 import { ElitePlanCard } from "@/components/ui/elite-plan-card";
 import ButtonWithIcon from "@/components/ui/button-with-icon";
 import { Dirham, DiscountBadge, Price, PriceTag } from "@/components/ui/dirham";
-import { products } from "@/lib/products";
+import { getCatalog } from "@/lib/catalog";
 
-const featuredProduct = products[0];
-const otherProducts = products.slice(1);
+export default async function ShopPage() {
+  const catalog = await getCatalog();
+  const featuredProduct = catalog[0];
+  const otherProducts = catalog.slice(1);
 
-export default function ShopPage() {
   return (
     <section className="pt-12 pb-16 px-6">
       <div className="max-w-6xl mx-auto">

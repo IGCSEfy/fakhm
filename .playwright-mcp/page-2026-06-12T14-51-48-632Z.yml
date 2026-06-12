@@ -1,0 +1,159 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e3]:
+      - list [ref=e4]:
+        - listitem [ref=e5]:
+          - link "Home" [ref=e6] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e7]: Home
+        - listitem [ref=e9]:
+          - link "Shop" [ref=e10] [cursor=pointer]:
+            - /url: /shop
+            - generic [ref=e11]: Shop
+        - listitem [ref=e13]:
+          - link "About" [ref=e14] [cursor=pointer]:
+            - /url: /about
+            - generic [ref=e15]: About
+        - listitem [ref=e17]:
+          - link "Contact" [ref=e18] [cursor=pointer]:
+            - /url: /contact
+            - generic [ref=e19]: Contact
+      - button "Open cart" [ref=e22]:
+        - img [ref=e23]
+  - article [ref=e26]:
+    - generic [ref=e27]:
+      - button "Back to shop" [ref=e29] [cursor=pointer]:
+        - img
+        - text: Back to shop
+      - generic [ref=e30]:
+        - generic [ref=e31]:
+          - img "Shams" [ref=e32]
+          - button "Previous photo" [ref=e33]:
+            - img [ref=e34]
+          - button "Next photo" [ref=e36]:
+            - img [ref=e37]
+        - generic [ref=e39]:
+          - generic [ref=e40]:
+            - paragraph [ref=e41]: The Sun
+            - heading "Shams" [level=1] [ref=e42]
+            - paragraph [ref=e43]: Warm, spiced and bold — oud wrapped in leather and amber.
+          - generic [ref=e44]:
+            - generic [ref=e45]:
+              - generic [ref=e46]: 25% Off
+              - generic [ref=e47]:
+                - paragraph [ref=e48]:
+                  - generic [ref=e49]:
+                    - generic [ref=e50]:
+                      - img "dirham" [ref=e51]
+                      - text: "45"
+                    - generic [ref=e52]:
+                      - img "dirham" [ref=e53]
+                      - text: "60"
+                - generic [ref=e54]: 6ml
+            - button "Add to cart" [ref=e55] [cursor=pointer]:
+              - generic [ref=e56]: Add to cart
+              - img [ref=e58]
+      - generic [ref=e61]:
+        - heading "About Shams" [level=2] [ref=e62]
+        - paragraph [ref=e63]: Shams — “the sun” — is our warmest blend. Smoky oud is layered with dark spices, a stroke of leather, and a long ambroxin trail that radiates off the skin. Made for cooler evenings and people who like to be remembered.
+      - generic [ref=e64]:
+        - heading "Scent Profile" [level=2] [ref=e65]
+        - paragraph [ref=e66]: Oud · Spices · Leather · Ambroxin
+      - generic [ref=e67]:
+        - heading "You may also like" [level=2] [ref=e68]
+        - generic [ref=e69]:
+          - link "Qamr The Moon Qamr 25% Off dirham 45 dirham 60 6ml" [ref=e70] [cursor=pointer]:
+            - /url: /shop/qamr
+            - generic [ref=e72]:
+              - img "Qamr" [ref=e74]
+              - generic [ref=e77]:
+                - paragraph [ref=e78]: The Moon
+                - generic [ref=e79]:
+                  - heading "Qamr" [level=3] [ref=e80]
+                  - generic [ref=e81]: 25% Off
+                - paragraph [ref=e82]:
+                  - generic [ref=e83]:
+                    - generic [ref=e84]:
+                      - generic [ref=e85]:
+                        - img "dirham" [ref=e86]
+                        - text: "45"
+                      - generic [ref=e87]:
+                        - img "dirham" [ref=e88]
+                        - text: "60"
+                    - generic [ref=e89]: 6ml
+          - link "Falaq Daybreak Falaq 25% Off dirham 45 dirham 60 6ml" [ref=e90] [cursor=pointer]:
+            - /url: /shop/falaq
+            - generic [ref=e92]:
+              - img "Falaq" [ref=e94]
+              - generic [ref=e97]:
+                - paragraph [ref=e98]: Daybreak
+                - generic [ref=e99]:
+                  - heading "Falaq" [level=3] [ref=e100]
+                  - generic [ref=e101]: 25% Off
+                - paragraph [ref=e102]:
+                  - generic [ref=e103]:
+                    - generic [ref=e104]:
+                      - generic [ref=e105]:
+                        - img "dirham" [ref=e106]
+                        - text: "45"
+                      - generic [ref=e107]:
+                        - img "dirham" [ref=e108]
+                        - text: "60"
+                    - generic [ref=e109]: 6ml
+          - link "Oud Zahabi The Golden Oud Zahabi 25% Off dirham 30 dirham 40 6ml" [ref=e110] [cursor=pointer]:
+            - /url: /shop/oud-zahabi
+            - generic [ref=e112]:
+              - img "Oud Zahabi" [ref=e114]
+              - generic [ref=e117]:
+                - paragraph [ref=e118]: The Golden
+                - generic [ref=e119]:
+                  - heading "Oud Zahabi" [level=3] [ref=e120]
+                  - generic [ref=e121]: 25% Off
+                - paragraph [ref=e122]:
+                  - generic [ref=e123]:
+                    - generic [ref=e124]:
+                      - generic [ref=e125]:
+                        - img "dirham" [ref=e126]
+                        - text: "30"
+                      - generic [ref=e127]:
+                        - img "dirham" [ref=e128]
+                        - text: "40"
+                    - generic [ref=e129]: 6ml
+  - contentinfo [ref=e130]:
+    - generic [ref=e131]:
+      - generic [ref=e132]:
+        - link "Fakhm Oud" [ref=e133] [cursor=pointer]:
+          - /url: /
+          - img "Fakhm Oud" [ref=e134]
+        - list [ref=e135]:
+          - listitem [ref=e136]:
+            - button "Instagram" [ref=e137] [cursor=pointer]:
+              - img
+          - listitem [ref=e138]:
+            - button "WhatsApp" [ref=e139] [cursor=pointer]:
+              - img
+      - generic [ref=e140]:
+        - navigation [ref=e141]:
+          - list [ref=e142]:
+            - listitem [ref=e143]:
+              - link "Home" [ref=e144] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=e145]:
+              - link "Shop" [ref=e146] [cursor=pointer]:
+                - /url: /shop
+            - listitem [ref=e147]:
+              - link "About" [ref=e148] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e149]:
+              - link "Contact" [ref=e150] [cursor=pointer]:
+                - /url: /contact
+        - list [ref=e152]:
+          - listitem [ref=e153]:
+            - link "Privacy" [ref=e154] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=e155]:
+            - link "Terms" [ref=e156] [cursor=pointer]:
+              - /url: "#"
+        - generic [ref=e157]:
+          - generic [ref=e158]: © 2026 Fakhm Oud
+          - generic [ref=e159]: All rights reserved

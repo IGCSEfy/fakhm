@@ -2,11 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
-import {
-  getOtherProducts,
-  getProductBySlug,
-  products,
-} from "@/lib/products";
+import { getProductBySlug, products } from "@/lib/products";
+import { getProduct, getRelatedProducts } from "@/lib/catalog";
 import ProductActions from "@/components/product-actions";
 import ProductGallery from "@/components/product-gallery";
 import { Button } from "@/components/ui/button";
@@ -35,10 +32,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ProductPage({ params }: Props) {
   const { slug } = await params;
-  const product = getProductBySlug(slug);
+  const product = await getProduct(slug);
   if (!product) notFound();
 
-  const related = getOtherProducts(product.slug);
+  const related = await getRelatedProducts(product.slug);
 
   return (
     <article className="pt-12 pb-16 px-6">
