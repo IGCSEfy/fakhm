@@ -22,10 +22,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const product = getProductBySlug(slug);
   if (!product) {
-    return { title: "Not found — Fakhm Oud" };
+    return { title: "Product not found" };
   }
   return {
-    title: `${product.name} — Fakhm Oud`,
+    // The layout's title template appends " — Fakhm Oud" automatically.
+    title: product.name,
     description: product.shortDescription,
   };
 }

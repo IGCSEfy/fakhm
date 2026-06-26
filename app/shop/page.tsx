@@ -20,7 +20,7 @@ export default async function ShopPage() {
           </h1>
           <p className="text-white/60 max-w-xl text-base font-normal">
             Oud-forward attars and bakhoor, blended to last. Free shipping on
-            orders over <Dirham className="me-1" />200.
+            orders over <Dirham className="me-1" />100.
           </p>
         </div>
 
@@ -110,7 +110,7 @@ export default async function ShopPage() {
             {
               icon: <Package className="h-5 w-5" />,
               label: "Free Shipping",
-              detail: "On orders over 200 dirham",
+              detail: "On orders over 100 dirham",
             },
             {
               icon: <RotateCcw className="h-5 w-5" />,
