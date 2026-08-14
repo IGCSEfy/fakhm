@@ -1,94 +1,41 @@
 "use client";
-import React, { useEffect } from "react";
-import { motion, stagger, useAnimate } from "motion/react";
+import React from "react";
+import { motion } from "motion/react";
 import ButtonWithIcon from "@/components/ui/button-with-icon";
 import ScrollExpandMedia from "@/components/ui/scroll-expansion-hero";
-import Floating, {
-  FloatingElement,
-} from "@/components/ui/parallax-floating";
 import { StaggerTestimonials } from "@/components/ui/stagger-testimonials";
-import Link from "next/link";
 
-// Curated for distinct colors and product silhouettes. This avoids repeating
-// the similar Prime Collection presentation shots in the home hero.
-const galleryImages = [
-  { src: "/products/oud-misri.jpeg", slug: "oud-misri", name: "Oud Misri" },
-  { src: "/products/musk-tahara-1.jpeg", slug: "musk-tahara", name: "Musk Tahara" },
-  { src: "/products/oud-zahabi.jpg", slug: "oud-zahabi", name: "Oud Zahabi" },
-  { src: "/products/oud-iraqi-bhukoor.jpg", slug: "oud-iraqi-bhukoor", name: "Oud Iraqi Bhukoor" },
-  { src: "/products/oud-qadeem-1.jpeg", slug: "oud-qadeem", name: "Oud Qadeem" },
-  { src: "/products/mukhalat-zaffron-2.jpeg", slug: "mukhalat-zaffron", name: "Mukhalat Zaffron" },
-  { src: "/products/qamr.jpg", slug: "qamr", name: "Qamr" },
-  { src: "/products/falaq.jpg", slug: "falaq", name: "Falaq" },
-];
-
-// Scatter positions + sizes, tuned for visual balance (kept from the original
-// layout). Each entry lines up by index with galleryImages.
-const galleryPositions: { depth: number; position: string; size: string }[] = [
-  { depth: 0.5, position: "top-[8%] left-[11%]", size: "w-16 h-16 md:w-24 md:h-24" },
-  { depth: 1, position: "top-[10%] left-[32%]", size: "w-20 h-20 md:w-28 md:h-28" },
-  { depth: 2, position: "top-[2%] left-[53%]", size: "w-28 h-40 md:w-40 md:h-52" },
-  { depth: 1, position: "top-[0%] left-[83%]", size: "w-24 h-24 md:w-32 md:h-32" },
-  { depth: 1, position: "top-[40%] left-[2%] hidden sm:block", size: "w-28 h-28 md:w-36 md:h-36" },
-  { depth: 2, position: "top-[70%] left-[77%]", size: "w-28 h-28 md:w-36 md:h-48" },
-  { depth: 4, position: "top-[73%] left-[15%]", size: "w-40 md:w-52 h-full" },
-  { depth: 1, position: "top-[80%] left-[50%] hidden sm:block", size: "w-24 h-24 md:w-32 md:h-32" },
-];
-
-function ParallaxGallery() {
-  const [scope, animate] = useAnimate();
-
-  useEffect(() => {
-    animate("img", { opacity: [0, 1] }, { duration: 0.5, delay: stagger(0.15) });
-  }, []);
-
+function ProductHero() {
   return (
-    <div
-      // `isolate` creates a new stacking context so the inner `z-50`
-      // elements (logo, Shop now button) can't escape this section
-      // and overlap the sticky navbar above.
-      className="relative isolate flex w-full h-full min-h-[600px] justify-center items-center bg-background overflow-hidden"
-      ref={scope}
+    <motion.section
+      className="relative isolate min-h-[calc(100svh-80px)] overflow-hidden bg-background"
+      initial={{ opacity: 0, filter: "blur(18px)", scale: 1.035 }}
+      animate={{ opacity: 1, filter: "blur(0px)", scale: 1 }}
+      transition={{ duration: 1.7, ease: [0.22, 1, 0.36, 1] }}
     >
-      <motion.div
-        className="z-50 text-center space-y-4 items-center flex flex-col"
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.88, delay: 1.5 }}
-      >
-        <img
-          src="/logo.svg"
-          alt="Fakhm Oud"
-          className="h-16 md:h-24 w-auto z-50"
-        />
+      <img
+        src="/home-page-oud-zahabi-v3.png"
+        alt="Fakhm Oud Zahabi"
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+      <p className="absolute inset-x-0 top-[12%] z-10 px-6 text-center text-xs font-medium uppercase tracking-[0.45em] text-white/80">
+        The art of oud
+      </p>
+      <div className="absolute inset-x-0 bottom-[8%] z-10 flex flex-col items-center gap-4 px-6 text-center">
+        <p className="text-xs font-medium uppercase tracking-[0.35em] text-white/80">
+          Oud Zahabi
+        </p>
         <ButtonWithIcon href="/attars">Shop now</ButtonWithIcon>
-      </motion.div>
-
-      <Floating sensitivity={-1} className="overflow-hidden">
-        {galleryPositions.map((slot, i) => {
-          const img = galleryImages[i % galleryImages.length];
-          return (
-            <FloatingElement key={i} depth={slot.depth} className={slot.position}>
-              <Link href={`/shop/${img.slug}`} aria-label={img.name}>
-                <motion.img
-                  initial={{ opacity: 0 }}
-                  src={img.src}
-                  alt={img.name}
-                  className={`${slot.size} object-cover hover:scale-105 duration-200 cursor-pointer transition-transform`}
-                />
-              </Link>
-            </FloatingElement>
-          );
-        })}
-      </Floating>
-    </div>
+      </div>
+      <h1 className="sr-only">Fakhm Oud</h1>
+    </motion.section>
   );
 }
 
 export default function Home() {
   return (
     <>
-      <ParallaxGallery />
+      <ProductHero />
       <ScrollExpandMedia
         mediaType="video"
         mediaSrc="/lingers.mp4"
