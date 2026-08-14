@@ -7,28 +7,36 @@ import { StaggerTestimonials } from "@/components/ui/stagger-testimonials";
 
 function ProductHero() {
   return (
-    <motion.section
-      className="relative isolate min-h-[calc(100svh-80px)] overflow-hidden bg-background"
-      initial={{ opacity: 0, filter: "blur(18px)", scale: 1.035 }}
-      animate={{ opacity: 1, filter: "blur(0px)", scale: 1 }}
-      transition={{ duration: 1.7, ease: [0.22, 1, 0.36, 1] }}
-    >
-      <img
+    <section className="relative isolate min-h-[calc(100svh-80px)] overflow-hidden bg-background">
+      <motion.img
         src="/home-page-oud-zahabi-v3.png"
         alt="Fakhm Oud Zahabi"
         className="absolute inset-0 h-full w-full object-cover"
+        initial={{ opacity: 0, filter: "blur(18px)", scale: 1.035 }}
+        animate={{ opacity: 1, filter: "blur(0px)", scale: 1 }}
+        transition={{ duration: 1.7, ease: [0.22, 1, 0.36, 1] }}
       />
-      <p className="absolute inset-x-0 top-[12%] z-10 px-6 text-center text-xs font-medium uppercase tracking-[0.45em] text-white/80">
+      <motion.p
+        className="absolute inset-x-0 top-[12%] z-10 px-6 text-center text-xs font-medium uppercase tracking-[0.45em] text-white/80"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.35 }}
+      >
         The art of oud
-      </p>
-      <div className="absolute inset-x-0 bottom-[8%] z-10 flex flex-col items-center gap-4 px-6 text-center">
+      </motion.p>
+      <motion.div
+        className="absolute inset-x-0 bottom-[8%] z-10 flex flex-col items-center gap-4 px-6 text-center"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.5 }}
+      >
         <p className="text-xs font-medium uppercase tracking-[0.35em] text-white/80">
           Oud Zahabi
         </p>
         <ButtonWithIcon href="/attars">Shop now</ButtonWithIcon>
-      </div>
+      </motion.div>
       <h1 className="sr-only">Fakhm Oud</h1>
-    </motion.section>
+    </section>
   );
 }
 
