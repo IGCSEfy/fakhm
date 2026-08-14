@@ -59,7 +59,7 @@ export function SiteFooter() {
       ]}
       mainLinks={[
         { href: "/", label: "Home" },
-        { href: "/shop", label: "Shop" },
+        { href: "/attars", label: "Attars" },
         { href: "/about", label: "About" },
         { href: "/contact", label: "Contact" },
       ]}

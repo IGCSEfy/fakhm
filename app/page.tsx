@@ -10,12 +10,13 @@ import { StaggerTestimonials } from "@/components/ui/stagger-testimonials";
 import Link from "next/link";
 import { products } from "@/lib/products";
 
-// Real product photos for the hero scatter — each image links to its product
-// page. Includes every product's cover plus the extra gallery shots some
-// products have (9 images across 8 scatter slots, so all products appear).
+// Only products with final photography appear in the hero scatter. New catalog
+// entries join this rotation once their product photos are added.
 const galleryImages = [
-  ...products.map((p) => ({ src: p.imageUrl, slug: p.slug, name: p.name })),
-  ...products.flatMap((p) =>
+  ...products
+    .filter((p) => p.imageUrl !== "/lingers.jpg")
+    .map((p) => ({ src: p.imageUrl, slug: p.slug, name: p.name })),
+  ...products.filter((p) => p.imageUrl !== "/lingers.jpg").flatMap((p) =>
     (p.images ?? []).slice(1).map((src) => ({ src, slug: p.slug, name: p.name })),
   ),
 ];
@@ -59,7 +60,7 @@ function ParallaxGallery() {
           alt="Fakhm Oud"
           className="h-16 md:h-24 w-auto z-50"
         />
-        <ButtonWithIcon href="/shop">Shop now</ButtonWithIcon>
+        <ButtonWithIcon href="/attars">Shop now</ButtonWithIcon>
       </motion.div>
 
       <Floating sensitivity={-1} className="overflow-hidden">

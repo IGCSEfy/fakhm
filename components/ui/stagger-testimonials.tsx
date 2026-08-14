@@ -10,72 +10,62 @@ const testimonials = [
   {
     tempId: 0,
     testimonial:
-      "Shams is my winter signature now. Warm, spicy, and it stays on my thobe all day.",
-    by: "Yusuf, Dubai",
-    imgSrc: "https://i.pravatar.cc/150?img=12",
+      "Shams is my winter signature now. Warm, spicy, and it stays on my thobe all day. It has a rich trail without ever feeling too heavy, even after a long evening out.",
+    by: "Muhammad Farooq, Al Barsha",
   },
   {
     tempId: 1,
     testimonial:
-      "Qamr is the one everyone asks about. The rose and cardamom together are unreal.",
-    by: "Layla, London",
-    imgSrc: "https://i.pravatar.cc/150?img=47",
+      "Qamr is the one everyone asks about. The rose and cardamom together are unreal. It feels polished and soft from the first application right through to the dry down.",
+    by: "Ayesha Siddiqui, Al Majaz",
   },
   {
     tempId: 2,
     testimonial:
-      "Falaq smells like a fresh morning — citrus and florals over oud. My daily wear.",
-    by: "Omar, Riyadh",
-    imgSrc: "https://i.pravatar.cc/150?img=15",
+      "Falaq smells like a fresh morning - citrus and florals over oud. It is bright, clean, and easy to wear, which is exactly why it has become my daily choice.",
+    by: "Zain Qureshi, Mirdif",
   },
   {
     tempId: 3,
     testimonial:
-      "Musk Rijali is so clean and easy. My go-to when I don't want to think about it.",
-    by: "Sara, Kuala Lumpur",
-    imgSrc: "https://i.pravatar.cc/150?img=32",
+      "Musk Rijali is so clean and easy. My go-to when I don't want to think about it. It sits close to the skin beautifully and still feels fresh many hours later.",
+    by: "Maryam Khan, Al Nahda",
   },
   {
     tempId: 4,
     testimonial:
-      "The Iraqi bakhoor fills the whole majlis. Guests always ask what's burning.",
-    by: "Imran, Toronto",
-    imgSrc: "https://i.pravatar.cc/150?img=8",
+      "The Iraqi bakhoor fills the whole majlis. Guests always ask what's burning. A small amount is enough to make the room feel warm, welcoming, and properly scented.",
+    by: "Ibrahim Ansari, Al Taawun",
   },
   {
     tempId: 5,
     testimonial:
-      "Wore Shams to a wedding. Three people followed me to ask what it was.",
-    by: "Khalid, Manchester",
-    imgSrc: "https://i.pravatar.cc/150?img=53",
+      "Wore Shams to a wedding. Three people followed me to ask what it was. The scent stayed noticeable throughout the night and worked perfectly with formal wear.",
+    by: "Sana Rizvi, Jumeirah",
   },
   {
     tempId: 6,
     testimonial:
-      "Gifted Qamr to my mother and immediately had to order another for myself.",
-    by: "Aisha, Paris",
-    imgSrc: "https://i.pravatar.cc/150?img=44",
+      "Gifted Qamr to my mother and immediately had to order another for myself. It feels elegant and comforting, and the bottle makes the whole experience feel special.",
+    by: "Abdul Rehman, Muweilah",
   },
   {
     tempId: 7,
     testimonial:
-      "Didn't expect this quality at the price. Lasts longer than bottles triple the cost.",
-    by: "Hassan, Abu Dhabi",
-    imgSrc: "https://i.pravatar.cc/150?img=60",
+      "Didn't expect this quality at the price. It lasts longer than bottles triple the cost and develops into something warmer and smoother as the day goes on.",
+    by: "Hiba Sheikh, Business Bay",
   },
   {
     tempId: 8,
     testimonial:
-      "My wife stole my Musk Rijali. I had to buy two more.",
-    by: "Tariq, Karachi",
-    imgSrc: "https://i.pravatar.cc/150?img=68",
+      "My wife stole my Musk Rijali, so I had to buy two more. It is the kind of clean scent that works for anyone and gets complimented every time it is worn.",
+    by: "Faisal Malik, Al Khan",
   },
   {
     tempId: 9,
     testimonial:
-      "Still smelled Falaq on my collar the next morning. Exactly what I want from an oud.",
-    by: "Noor, Doha",
-    imgSrc: "https://i.pravatar.cc/150?img=49",
+      "Still smelled Falaq on my collar the next morning. Exactly what I want from an oud: fresh at first, warm later, and present without being overpowering.",
+    by: "Nida Mahmood, Deira",
   },
 ];
 
@@ -125,14 +115,6 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
           top: 48,
           width: SQRT_5000,
           height: 2,
-        }}
-      />
-      <img
-        src={testimonial.imgSrc}
-        alt={`${testimonial.by.split(",")[0]}`}
-        className="mb-4 h-14 w-12 bg-muted object-cover object-top"
-        style={{
-          boxShadow: "3px 3px 0px var(--background)",
         }}
       />
       <h3 className="text-base sm:text-xl font-medium text-foreground">

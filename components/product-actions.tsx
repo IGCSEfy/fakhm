@@ -12,6 +12,7 @@ type Props = {
 
 export default function ProductActions({ product }: Props) {
   const addItem = useCartStore((s) => s.addItem);
+  const canAddToCart = Boolean(product.shopifyVariantId);
 
   const handleAddToCart = () => {
     addItem({
@@ -50,7 +51,9 @@ export default function ProductActions({ product }: Props) {
           )}
         </div>
       </div>
-      <ButtonWithIcon onClick={handleAddToCart}>Add to cart</ButtonWithIcon>
+      <ButtonWithIcon onClick={handleAddToCart} disabled={!canAddToCart}>
+        {canAddToCart ? "Add to cart" : "Available soon"}
+      </ButtonWithIcon>
     </div>
   );
 }
