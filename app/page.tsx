@@ -19,7 +19,7 @@ function ProductHero() {
       <motion.img
         src="/home-page-oud-zahabi-mobile.png"
         alt="Fakhm Oud Zahabi"
-        className="absolute inset-0 h-full w-full object-cover md:hidden"
+        className="absolute inset-0 h-full w-full bg-black object-contain md:hidden"
         initial={{ opacity: 0, filter: "blur(18px)", scale: 1.035 }}
         animate={{ opacity: 1, filter: "blur(0px)", scale: 1 }}
         transition={{ duration: 1.7, ease: [0.22, 1, 0.36, 1] }}
