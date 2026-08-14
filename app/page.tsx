@@ -8,17 +8,18 @@ import Floating, {
 } from "@/components/ui/parallax-floating";
 import { StaggerTestimonials } from "@/components/ui/stagger-testimonials";
 import Link from "next/link";
-import { products } from "@/lib/products";
 
-// Only products with final photography appear in the hero scatter. New catalog
-// entries join this rotation once their product photos are added.
+// Curated for distinct colors and product silhouettes. This avoids repeating
+// the similar Prime Collection presentation shots in the home hero.
 const galleryImages = [
-  ...products
-    .filter((p) => p.imageUrl !== "/lingers.jpg")
-    .map((p) => ({ src: p.imageUrl, slug: p.slug, name: p.name })),
-  ...products.filter((p) => p.imageUrl !== "/lingers.jpg").flatMap((p) =>
-    (p.images ?? []).slice(1).map((src) => ({ src, slug: p.slug, name: p.name })),
-  ),
+  { src: "/products/oud-misri.jpeg", slug: "oud-misri", name: "Oud Misri" },
+  { src: "/products/musk-tahara-1.jpeg", slug: "musk-tahara", name: "Musk Tahara" },
+  { src: "/products/oud-zahabi.jpg", slug: "oud-zahabi", name: "Oud Zahabi" },
+  { src: "/products/oud-iraqi-bhukoor.jpg", slug: "oud-iraqi-bhukoor", name: "Oud Iraqi Bhukoor" },
+  { src: "/products/oud-qadeem-1.jpeg", slug: "oud-qadeem", name: "Oud Qadeem" },
+  { src: "/products/mukhalat-zaffron-2.jpeg", slug: "mukhalat-zaffron", name: "Mukhalat Zaffron" },
+  { src: "/products/qamr.jpg", slug: "qamr", name: "Qamr" },
+  { src: "/products/falaq.jpg", slug: "falaq", name: "Falaq" },
 ];
 
 // Scatter positions + sizes, tuned for visual balance (kept from the original
